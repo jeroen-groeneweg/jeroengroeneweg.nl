@@ -1,11 +1,22 @@
 const particles = document.querySelector('.particles');
+const particleCount = 64;
 
-for (let index = 0; index < 24; index += 1) {
+for (let index = 0; index < particleCount; index += 1) {
   const particle = document.createElement('span');
+  const size = 2 + Math.random() * 5;
+
   particle.className = 'particle';
-  particle.style.left = `${(index * 43 + 7) % 100}%`;
-  particle.style.top = `${(index * 29 + 11) % 100}%`;
-  particle.style.animationDelay = `${(index % 8) * -0.7}s`;
+  particle.style.left = `${Math.random() * 100}%`;
+  particle.style.top = `${Math.random() * 100}%`;
+  particle.style.width = `${size}px`;
+  particle.style.height = `${size}px`;
+  particle.style.opacity = `${0.25 + Math.random() * 0.5}`;
+  particle.style.animationDelay = `${Math.random() * -9}s`;
+  particle.style.animationDuration = `${4 + Math.random() * 7}s`;
+  particle.style.setProperty('--particle-drift-x', `${-22 + Math.random() * 44}px`);
+  particle.style.setProperty('--particle-drift-y', `${-42 + Math.random() * 28}px`);
+  particle.style.setProperty('--particle-highlight', `${0.65 + Math.random() * 0.35}`);
+  particle.style.setProperty('--particle-scale', `${0.8 + Math.random() * 0.8}`);
   particles.append(particle);
 }
 
