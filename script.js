@@ -55,7 +55,7 @@ if (hero && !reduceMotion.matches) {
   const updateHeroParallax = () => {
     const scrollDistance = Math.min(window.scrollY, hero.offsetHeight);
     hero.style.setProperty('--hero-copy-parallax', `${scrollDistance * -0.14}px`);
-    hero.style.setProperty('--hero-portrait-parallax', `${scrollDistance * 0.72}px`);
+    hero.style.setProperty('--hero-portrait-parallax', `${scrollDistance * 0.36}px`);
     hero.style.setProperty('--hero-violet-x-parallax', `${scrollDistance * -0.1}px`);
     hero.style.setProperty('--hero-violet-y-parallax', `${scrollDistance * 0.42}px`);
     hero.style.setProperty('--hero-green-x-parallax', `${scrollDistance * 0.08}px`);
