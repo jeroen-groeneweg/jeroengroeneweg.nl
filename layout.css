@@ -42,6 +42,25 @@ footer {
   left: var(--content-gutter);
 }
 
+@media (prefers-reduced-motion: no-preference) and (min-width: 761px) {
+  .hero-copy {
+    transform: translate3d(0, var(--hero-copy-parallax, 0px), 0);
+  }
+
+  .portrait {
+    transform: translate3d(0, var(--hero-portrait-parallax, 0px), 0);
+  }
+
+  .orb-violet,
+  .orb-green {
+    transform: translate3d(0, var(--hero-orb-parallax, 0px), 0);
+  }
+
+  .grid {
+    transform: translate3d(0, var(--hero-grid-parallax, 0px), 0);
+  }
+}
+
 @media (min-width: 1025px) {
   .hero-copy {
     max-width: 570px;
@@ -77,6 +96,12 @@ footer {
   }
 }
 
+@media (max-width: 1024px) {
+  .portrait > div {
+    display: none;
+  }
+}
+
 @media (max-width: 760px) {
   :root {
     --content-gutter: 6vw;
@@ -89,13 +114,6 @@ footer {
     position: relative;
     right: auto;
     width: min(84vw, 320px);
-  }
-
-  .portrait > div {
-    bottom: 0;
-    right: 0;
-    top: auto;
-    width: 100%;
   }
 
   .hero {

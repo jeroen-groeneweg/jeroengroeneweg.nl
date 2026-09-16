@@ -24,6 +24,32 @@ document.querySelectorAll('.nav-links a').forEach((link) => {
   });
 });
 
+const hero = document.querySelector('.hero');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+if (hero && !reduceMotion.matches) {
+  let frameId;
+
+  const updateHeroParallax = () => {
+    const scrollDistance = Math.min(window.scrollY, hero.offsetHeight);
+    hero.style.setProperty('--hero-copy-parallax', `${scrollDistance * -0.14}px`);
+    hero.style.setProperty('--hero-portrait-parallax', `${scrollDistance * 0.06}px`);
+    hero.style.setProperty('--hero-orb-parallax', `${scrollDistance * 0.1}px`);
+    hero.style.setProperty('--hero-grid-parallax', `${scrollDistance * 0.03}px`);
+    frameId = undefined;
+  };
+
+  const requestHeroParallax = () => {
+    if (!frameId) {
+      frameId = window.requestAnimationFrame(updateHeroParallax);
+    }
+  };
+
+  window.addEventListener('scroll', requestHeroParallax, { passive: true });
+  window.addEventListener('resize', requestHeroParallax);
+  updateHeroParallax();
+}
+
 const projectData = {
   arcade: {
     className: 'arcade',
