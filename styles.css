@@ -136,12 +136,13 @@ h2 em {
 }
 .portrait > div {
   background: var(--violet);
-  border-radius: 50% 50% 0 0;
   height: 78%;
   position: absolute;
   right: -8%;
   top: 5%;
   width: 130%;
+  bottom: 0;
+  border-radius: 50% 50% 50% 0;
 }
 .portrait img {
   bottom: 0;
