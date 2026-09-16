@@ -813,9 +813,7 @@ footer {
     right: -14vw;
     width: 300px;
   }
-  .portrait figcaption {
-    display: none;
-  }
+
   .scroll {
     bottom: 20px;
   }
