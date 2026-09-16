@@ -147,16 +147,16 @@ h2 em {
   bottom: 0;
   height: 93%;
   object-fit: cover;
-  object-position: 52% 16%;
+  object-position: 45% 16%;
   position: absolute;
   right: 0;
-  width: 93%;
+  width: 100%;
 }
 .portrait figcaption {
   bottom: 28px;
   font-size: 14px;
   font-weight: 800;
-  left: 0;
+  left: 20px;
   line-height: 1.3;
   position: absolute;
   z-index: 2;
