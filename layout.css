@@ -1,0 +1,52 @@
+:root {
+  --content-width: 1000px;
+  --content-gutter: max(5vw, calc((100vw - var(--content-width)) / 2));
+}
+
+/* Keep the colour fields full-bleed, while placing the reading and interaction
+   content on a single, deliberately narrow executive-profile rail. */
+.nav {
+  padding-left: var(--content-gutter);
+  padding-right: var(--content-gutter);
+}
+
+.hero {
+  padding-left: var(--content-gutter);
+  padding-right: var(--content-gutter);
+}
+
+.section,
+.section-dark {
+  padding-left: var(--content-gutter);
+  padding-right: var(--content-gutter);
+}
+
+footer {
+  padding-left: var(--content-gutter);
+  padding-right: var(--content-gutter);
+}
+
+.scroll {
+  left: var(--content-gutter);
+}
+
+@media (min-width: 1025px) {
+  .hero-copy {
+    max-width: 570px;
+  }
+
+  .portrait {
+    right: var(--content-gutter);
+    width: min(34vw, 415px);
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --content-gutter: 6vw;
+  }
+
+  .portrait {
+    right: -14vw;
+  }
+}
