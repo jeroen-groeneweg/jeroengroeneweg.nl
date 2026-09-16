@@ -47,6 +47,7 @@ if (navigation) {
 }
 
 const hero = document.querySelector('.hero');
+const portraitCaption = document.querySelector('.portrait-caption');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 if (hero && !reduceMotion.matches) {
@@ -56,7 +57,6 @@ if (hero && !reduceMotion.matches) {
     const scrollDistance = Math.min(window.scrollY, hero.offsetHeight);
     hero.style.setProperty('--hero-copy-parallax', `${scrollDistance * -0.14}px`);
     hero.style.setProperty('--hero-portrait-parallax', `${scrollDistance * 0.36}px`);
-    hero.style.setProperty('--hero-portrait-caption-parallax', `${scrollDistance * -0.36}px`);
     hero.style.setProperty('--hero-violet-x-parallax', `${scrollDistance * -0.1}px`);
     hero.style.setProperty('--hero-violet-y-parallax', `${scrollDistance * 0.42}px`);
     hero.style.setProperty('--hero-green-x-parallax', `${scrollDistance * 0.08}px`);
@@ -76,6 +76,35 @@ if (hero && !reduceMotion.matches) {
   window.addEventListener('scroll', requestHeroParallax, { passive: true });
   window.addEventListener('resize', requestHeroParallax);
   updateHeroParallax();
+}
+
+if (hero && portraitCaption) {
+  const updatePortraitCaption = () => {
+    const withinHero = window.scrollY > 0 && window.scrollY < hero.offsetHeight;
+    const canPinCaption = window.innerWidth > 760 && withinHero;
+
+    if (!canPinCaption) {
+      portraitCaption.classList.remove('is-pinned');
+      return;
+    }
+
+    if (!portraitCaption.classList.contains('is-pinned')) {
+      const captionRect = portraitCaption.getBoundingClientRect();
+      const captionIsVisible = captionRect.top < window.innerHeight - 24 && captionRect.bottom > 0;
+
+      if (captionIsVisible) {
+        hero.style.setProperty('--hero-portrait-caption-top', `${captionRect.top}px`);
+        portraitCaption.classList.add('is-pinned');
+      }
+    }
+  };
+
+  window.addEventListener('scroll', updatePortraitCaption, { passive: true });
+  window.addEventListener('resize', () => {
+    portraitCaption.classList.remove('is-pinned');
+    updatePortraitCaption();
+  });
+  updatePortraitCaption();
 }
 
 const projectData = {

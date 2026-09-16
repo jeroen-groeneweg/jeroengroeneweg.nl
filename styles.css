@@ -153,16 +153,23 @@ h2 em {
   right: 0;
   width: 100%;
 }
-.portrait figcaption {
+.portrait-caption {
   bottom: 28px;
   font-size: 14px;
   font-weight: 800;
-  left: 20px;
+  left: calc(100% - 5vw - min(37vw, 475px) + 20px);
   line-height: 1.3;
   position: absolute;
   z-index: 2;
 }
-.portrait small {
+.portrait-caption.is-pinned {
+  bottom: auto;
+  pointer-events: none;
+  position: fixed;
+  top: var(--hero-portrait-caption-top);
+  z-index: 5;
+}
+.portrait-caption small {
   color: rgba(255, 255, 255, 0.68);
   font-size: 10px;
   font-weight: 500;
@@ -777,7 +784,7 @@ footer {
     right: -14vw;
     width: 300px;
   }
-  .portrait figcaption {
+  .portrait-caption {
     display: none;
   }
   .scroll {
