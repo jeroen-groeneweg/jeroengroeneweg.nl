@@ -296,6 +296,32 @@ h2 em {
 .bridgefund-story p + p {
   margin-top: 24px;
 }
+.transformation-ingredients {
+  border-top: 1px solid var(--line);
+  margin-top: 48px;
+  padding-top: 32px;
+}
+.transformation-ingredients h3 {
+  font-size: clamp(24px, 3vw, 32px);
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+.transformation-ingredients ol {
+  font-size: 17px;
+  line-height: 1.6;
+  margin: 24px 0 0;
+  padding-left: 1.6em;
+}
+.transformation-ingredients li {
+  padding-left: 8px;
+}
+.transformation-ingredients li + li {
+  margin-top: 12px;
+}
+.transformation-ingredients li::marker {
+  color: var(--teal);
+  font-weight: 800;
+}
 .section-dark {
   background: var(--deep);
   color: #fff;
