@@ -54,7 +54,8 @@ footer {
   .orb-violet,
   .orb-green,
   .grid,
-  .portrait > div {
+  .portrait > div,
+  .portrait img {
     will-change: transform;
   }
 
@@ -81,7 +82,9 @@ footer {
   .portrait > div {
     transform: translate3d(
       var(--hero-portrait-shape-x-parallax, 0px),
-      var(--hero-portrait-shape-y-parallax, 0px),
+      calc(
+        var(--hero-portrait-shape-y-parallax, 0px) + var(--hero-portrait-parallax, 0px)
+      ),
       0
     );
   }
@@ -92,10 +95,9 @@ footer {
     transform: translate3d(0, var(--hero-copy-parallax, 0px), 0);
   }
 
-  .portrait {
+  .portrait img {
     transform: translate3d(0, var(--hero-portrait-parallax, 0px), 0);
   }
-
 }
 
 @media (min-width: 1025px) {
@@ -106,10 +108,6 @@ footer {
   .portrait {
     right: var(--content-gutter);
     width: min(34vw, 415px);
-  }
-
-  .portrait-caption {
-    left: calc(100% - var(--content-gutter) - min(34vw, 415px) + 20px);
   }
 }
 
@@ -134,10 +132,6 @@ footer {
   .portrait {
     right: var(--content-gutter);
     width: min(37vw, 365px);
-  }
-
-  .portrait-caption {
-    left: calc(100% - var(--content-gutter) - min(37vw, 365px) + 20px);
   }
 }
 

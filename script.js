@@ -47,7 +47,6 @@ if (navigation) {
 }
 
 const hero = document.querySelector('.hero');
-const portraitCaption = document.querySelector('.portrait-caption');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 if (hero && !reduceMotion.matches) {
@@ -76,35 +75,6 @@ if (hero && !reduceMotion.matches) {
   window.addEventListener('scroll', requestHeroParallax, { passive: true });
   window.addEventListener('resize', requestHeroParallax);
   updateHeroParallax();
-}
-
-if (hero && portraitCaption) {
-  const updatePortraitCaption = () => {
-    const withinHero = window.scrollY > 0 && window.scrollY < hero.offsetHeight;
-    const canPinCaption = window.innerWidth > 760 && withinHero;
-
-    if (!canPinCaption) {
-      portraitCaption.classList.remove('is-pinned');
-      return;
-    }
-
-    if (!portraitCaption.classList.contains('is-pinned')) {
-      const captionRect = portraitCaption.getBoundingClientRect();
-      const captionIsVisible = captionRect.top < window.innerHeight - 24 && captionRect.bottom > 0;
-
-      if (captionIsVisible) {
-        hero.style.setProperty('--hero-portrait-caption-top', `${captionRect.top}px`);
-        portraitCaption.classList.add('is-pinned');
-      }
-    }
-  };
-
-  window.addEventListener('scroll', updatePortraitCaption, { passive: true });
-  window.addEventListener('resize', () => {
-    portraitCaption.classList.remove('is-pinned');
-    updatePortraitCaption();
-  });
-  updatePortraitCaption();
 }
 
 const projectData = {
