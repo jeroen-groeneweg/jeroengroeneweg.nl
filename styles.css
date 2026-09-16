@@ -286,6 +286,10 @@ h2 em {
 .two-column-copy p + p {
   color: rgba(23, 36, 75, 0.68);
 }
+.bridgefund-story p + p {
+  color: inherit;
+  margin-top: 24px;
+}
 .section-dark {
   background: var(--deep);
   color: #fff;
@@ -792,6 +796,9 @@ footer {
     margin-top: 45px;
   }
   .two-column-copy p + p {
+    margin-top: 22px;
+  }
+  .bridgefund-story > div + div {
     margin-top: 22px;
   }
   .result-grid {
