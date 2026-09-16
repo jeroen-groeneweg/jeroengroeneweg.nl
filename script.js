@@ -24,6 +24,17 @@ document.querySelectorAll('.nav-links a').forEach((link) => {
   });
 });
 
+const navigation = document.querySelector('.nav');
+
+if (navigation) {
+  const updateNavigation = () => {
+    navigation.classList.toggle('is-scrolled', window.scrollY > 48);
+  };
+
+  window.addEventListener('scroll', updateNavigation, { passive: true });
+  updateNavigation();
+}
+
 const hero = document.querySelector('.hero');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 

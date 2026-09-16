@@ -14,8 +14,20 @@ main {
 /* Keep the colour fields full-bleed, while placing the reading and interaction
    content on a single, deliberately narrow executive-profile rail. */
 .nav {
+  background-color: transparent;
   padding-left: var(--content-gutter);
   padding-right: var(--content-gutter);
+  transition:
+    background-color 220ms ease,
+    box-shadow 220ms ease,
+    backdrop-filter 220ms ease;
+}
+
+.nav.is-scrolled {
+  background-color: rgba(6, 49, 71, 0.94);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 rgba(145, 225, 215, 0.24), 0 10px 28px rgba(0, 0, 0, 0.16);
+  position: fixed;
 }
 
 .hero {
