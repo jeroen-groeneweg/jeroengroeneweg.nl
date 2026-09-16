@@ -34,11 +34,13 @@ if (hero && !reduceMotion.matches) {
     const scrollDistance = Math.min(window.scrollY, hero.offsetHeight);
     hero.style.setProperty('--hero-copy-parallax', `${scrollDistance * -0.14}px`);
     hero.style.setProperty('--hero-portrait-parallax', `${scrollDistance * 0.06}px`);
-    hero.style.setProperty('--hero-violet-x-parallax', `${scrollDistance * -0.05}px`);
-    hero.style.setProperty('--hero-violet-y-parallax', `${scrollDistance * 0.28}px`);
-    hero.style.setProperty('--hero-green-x-parallax', `${scrollDistance * 0.04}px`);
-    hero.style.setProperty('--hero-green-y-parallax', `${scrollDistance * -0.18}px`);
-    hero.style.setProperty('--hero-grid-parallax', `${scrollDistance * 0.12}px`);
+    hero.style.setProperty('--hero-violet-x-parallax', `${scrollDistance * -0.1}px`);
+    hero.style.setProperty('--hero-violet-y-parallax', `${scrollDistance * 0.42}px`);
+    hero.style.setProperty('--hero-green-x-parallax', `${scrollDistance * 0.08}px`);
+    hero.style.setProperty('--hero-green-y-parallax', `${scrollDistance * -0.28}px`);
+    hero.style.setProperty('--hero-grid-parallax', `${scrollDistance * 0.2}px`);
+    hero.style.setProperty('--hero-portrait-shape-x-parallax', `${scrollDistance * 0.06}px`);
+    hero.style.setProperty('--hero-portrait-shape-y-parallax', `${scrollDistance * -0.22}px`);
     frameId = undefined;
   };
 

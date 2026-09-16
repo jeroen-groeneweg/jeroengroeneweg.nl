@@ -45,7 +45,8 @@ footer {
 @media (prefers-reduced-motion: no-preference) {
   .orb-violet,
   .orb-green,
-  .grid {
+  .grid,
+  .portrait > div {
     will-change: transform;
   }
 
@@ -67,6 +68,14 @@ footer {
 
   .grid {
     transform: translate3d(0, var(--hero-grid-parallax, 0px), 0);
+  }
+
+  .portrait > div {
+    transform: translate3d(
+      var(--hero-portrait-shape-x-parallax, 0px),
+      var(--hero-portrait-shape-y-parallax, 0px),
+      0
+    );
   }
 }
 
