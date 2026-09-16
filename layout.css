@@ -3,6 +3,10 @@
   --content-gutter: max(5vw, calc((100vw - var(--content-width)) / 2));
 }
 
+body {
+  overflow-x: hidden;
+}
+
 /* Keep the colour fields full-bleed, while placing the reading and interaction
    content on a single, deliberately narrow executive-profile rail. */
 .nav {
@@ -19,6 +23,10 @@
 .section-dark {
   padding-left: var(--content-gutter);
   padding-right: var(--content-gutter);
+}
+
+.section-dark {
+  overflow: hidden;
 }
 
 footer {
@@ -41,12 +49,64 @@ footer {
   }
 }
 
+@media (min-width: 761px) and (max-width: 1024px) {
+  .hero {
+    min-height: 720px;
+  }
+
+  .hero-copy {
+    max-width: 52%;
+  }
+
+  .hero-copy > p:not(.eyebrow) {
+    font-size: 16px;
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: clamp(52px, 7vw, 72px);
+  }
+
+  .portrait {
+    right: var(--content-gutter);
+    width: min(37vw, 365px);
+  }
+}
+
 @media (max-width: 760px) {
   :root {
     --content-gutter: 6vw;
   }
 
   .portrait {
-    right: -14vw;
+    bottom: auto;
+    height: 330px;
+    margin: 42px -6vw 0 auto;
+    position: relative;
+    right: auto;
+    width: min(84vw, 320px);
+  }
+
+  .hero {
+    min-height: 0;
+    padding-bottom: 0;
+  }
+
+  .hero-copy {
+    max-width: 100%;
+  }
+
+  .scroll {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .result-grid article {
+    min-height: 0;
   }
 }
