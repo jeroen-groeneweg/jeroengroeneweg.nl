@@ -95,6 +95,10 @@ footer {
   .portrait {
     transform: translate3d(0, var(--hero-portrait-parallax, 0px), 0);
   }
+
+  .portrait figcaption {
+    transform: translate3d(0, var(--hero-portrait-caption-parallax, 0px), 0);
+  }
 }
 
 @media (min-width: 1025px) {
