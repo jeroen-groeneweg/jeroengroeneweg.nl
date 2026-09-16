@@ -17,10 +17,6 @@ main {
   background-color: transparent;
   padding-left: var(--content-gutter);
   padding-right: var(--content-gutter);
-  transition:
-    background-color 220ms ease,
-    box-shadow 220ms ease,
-    backdrop-filter 220ms ease;
 }
 
 .nav.is-scrolled {
