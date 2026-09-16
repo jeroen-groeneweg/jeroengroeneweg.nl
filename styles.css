@@ -285,12 +285,16 @@ h2 em {
 .two-column-copy p + p {
   color: rgba(23, 36, 75, 0.68);
 }
-.bridgefund-story p + p {
-  color: inherit;
-  margin-top: 24px;
+.bridgefund-story {
+  margin-top: 65px;
 }
-.bridgefund-story .bridgefund-closing {
-  grid-column: 1 / -1;
+.bridgefund-story p {
+  font-size: 17px;
+  line-height: 1.6;
+  margin: 0;
+}
+.bridgefund-story p + p {
+  margin-top: 24px;
 }
 .section-dark {
   background: var(--deep);
@@ -800,10 +804,7 @@ footer {
   .two-column-copy p + p {
     margin-top: 22px;
   }
-  .bridgefund-story > div + div {
-    margin-top: 22px;
-  }
-  .bridgefund-story .bridgefund-closing {
+  .bridgefund-story p + p {
     margin-top: 22px;
   }
   .result-grid {
