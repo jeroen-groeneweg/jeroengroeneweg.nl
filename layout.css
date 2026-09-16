@@ -7,6 +7,10 @@ body {
   overflow-x: hidden;
 }
 
+main {
+  overflow: hidden;
+}
+
 /* Keep the colour fields full-bleed, while placing the reading and interaction
    content on a single, deliberately narrow executive-profile rail. */
 .nav {
