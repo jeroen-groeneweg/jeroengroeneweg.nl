@@ -289,6 +289,9 @@ h2 em {
   color: inherit;
   margin-top: 24px;
 }
+.bridgefund-story .bridgefund-closing {
+  grid-column: 1 / -1;
+}
 .section-dark {
   background: var(--deep);
   color: #fff;
@@ -798,6 +801,9 @@ footer {
     margin-top: 22px;
   }
   .bridgefund-story > div + div {
+    margin-top: 22px;
+  }
+  .bridgefund-story .bridgefund-closing {
     margin-top: 22px;
   }
   .result-grid {
