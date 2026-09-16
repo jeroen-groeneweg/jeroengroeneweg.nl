@@ -87,6 +87,13 @@ footer {
     width: min(84vw, 320px);
   }
 
+  .portrait > div {
+    bottom: 0;
+    right: 0;
+    top: auto;
+    width: 100%;
+  }
+
   .hero {
     min-height: 0;
     padding-bottom: 0;
