@@ -149,10 +149,10 @@ footer {
   .portrait {
     bottom: auto;
     height: 330px;
-    margin: 42px -6vw 0 auto;
+    margin: 0 -6vw 0 auto;
     position: relative;
     right: auto;
-    width: min(84vw, 320px);
+    width: 100%;
   }
 
   .hero {
