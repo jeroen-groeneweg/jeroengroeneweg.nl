@@ -301,6 +301,9 @@ h2 em {
   border-radius: 12px;
   overflow: hidden;
 }
+.bridgefund-story .story-purpose {
+  margin-bottom: 32px;
+}
 .story-year + .story-year {
   margin-top: 20px;
 }
