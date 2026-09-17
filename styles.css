@@ -361,8 +361,21 @@ h2 em {
   letter-spacing: -0.025em;
 }
 .story-year-body {
-  background: #fffefa;
+  background: #fbf4ea;
   padding: 0 28px 12px;
+}
+.story-acknowledgement {
+  border-top: 1px solid var(--line);
+  margin-top: 32px;
+  padding-top: 24px;
+}
+.story-acknowledgement h3 {
+  color: var(--teal);
+  font-size: 18px;
+  margin: 0 0 12px;
+}
+.bridgefund-story .story-acknowledgement p {
+  font-size: 16px;
 }
 .story-intro {
   padding: 28px 0;
