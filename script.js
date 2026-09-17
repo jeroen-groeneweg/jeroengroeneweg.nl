@@ -1,3 +1,15 @@
+// Native details names keep one year and one chapter open. Reset nested
+// chapters when their year closes so reopening a year starts at its overview.
+document.querySelectorAll('.story-year').forEach((year) => {
+  year.addEventListener('toggle', () => {
+    if (!year.open) {
+      year.querySelectorAll('details[open]').forEach((chapter) => {
+        chapter.open = false;
+      });
+    }
+  });
+});
+
 const particles = document.querySelector('.particles');
 const particleCount = 64;
 
