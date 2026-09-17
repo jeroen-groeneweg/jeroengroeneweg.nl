@@ -13,6 +13,19 @@ document.querySelectorAll('.story-year').forEach((year) => {
 // Wait for sibling content to close and the layout to settle before
 // placing the newly opened heading below the fixed navigation.
 document.querySelectorAll('.story-year, .story-chapter').forEach((section) => {
+  const heading = section.querySelector(':scope > summary');
+  heading.addEventListener('click', (event) => {
+    if (section.open || event.defaultPrevented || event.target.closest('a, button')) return;
+    // Apply the exclusive toggle and compensate for its layout change in the
+    // same task, before the browser paints. Keyboard activation also clicks.
+    event.preventDefault();
+    const previousTop = heading.getBoundingClientRect().top;
+    section.open = true;
+    window.scrollTo({
+      top: window.scrollY + heading.getBoundingClientRect().top - previousTop,
+      behavior: 'instant',
+    });
+  });
   section.addEventListener('toggle', () => {
     if (!section.open) return;
     window.requestAnimationFrame(() => {

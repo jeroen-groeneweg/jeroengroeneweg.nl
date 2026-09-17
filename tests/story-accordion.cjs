@@ -58,7 +58,20 @@ async function main() {
       // Switching back upwards must also align after the previous content closes.
       await chapter(1).locator(':scope > summary').click();
       await expectAligned(chapter(1));
-      await chapter(2).locator(':scope > summary').click();
+      const nextHeading = chapter(2).locator(':scope > summary');
+      await nextHeading.scrollIntoViewIfNeeded();
+      await page.evaluate(() => {
+        const heading = document.querySelector('#bridgefund-year-1-chapter-2 > summary');
+        heading.addEventListener('click', () => {
+          const before = heading.getBoundingClientRect().top;
+          requestAnimationFrame(() => {
+            window.headingJump = Math.abs(heading.getBoundingClientRect().top - before);
+          });
+        }, { capture: true, once: true });
+      });
+      await nextHeading.click();
+      await page.waitForFunction(() => typeof window.headingJump === 'number');
+      assert.ok(await page.evaluate(() => window.headingJump < 2), 'heading must not jump before smooth scrolling');
       await expectAligned(chapter(2));
       await expectOpen(year(1), true);
       assert.equal(await openCount(), 2);
@@ -88,8 +101,10 @@ async function main() {
       );
       const behaviors = await page.evaluate(() => window.storyScrollBehaviors);
       assert.ok(behaviors.length > 0);
-      assert.ok(behaviors.every((behavior) =>
-        behavior === (reducedMotion === 'reduce' ? 'instant' : 'smooth')));
+      assert.ok(behaviors.includes('instant'), 'layout compensation is synchronous');
+      assert.ok(reducedMotion === 'reduce'
+        ? behaviors.every((behavior) => behavior === 'instant')
+        : behaviors.includes('smooth'));
       console.log('PASS ' + width + ' ' + reducedMotion + ': accordion, alignment and scroll preference');
       await page.close();
     }
