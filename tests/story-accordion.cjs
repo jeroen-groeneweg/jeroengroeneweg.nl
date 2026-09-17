@@ -31,11 +31,16 @@ async function main() {
         }, await item.getAttribute('id'));
       };
       assert.equal(await openCount(), 0);
+      assert.equal(await page.locator('.story-takeaway .story-resource').count(), 0);
+      assert.equal(await page.locator('.story-chapter-body > .story-resource').count(), 28);
       await activate(year(1), 'Enter');
       await expectAligned(year(1));
       await activate(chapter(1), 'Space');
       await expectOpen(chapter(1), true);
       await expectAligned(chapter(1));
+      assert.ok(await chapter(1).locator('.story-chapter-body').evaluate(
+        (element) => element.getBoundingClientRect().width <= 780,
+      ));
       await activate(chapter(2), 'Enter');
       await expectOpen(chapter(1), false);
       await expectOpen(chapter(2), true);

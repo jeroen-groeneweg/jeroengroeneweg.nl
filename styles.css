@@ -378,13 +378,23 @@ h2 em {
   font-size: 16px;
 }
 .story-intro {
-  padding: 28px 0;
+  max-width: 780px;
+  margin-inline: auto;
+  padding: 36px 0;
+}
+.bridgefund-story .story-intro > p:first-child {
+  font-size: clamp(19px, 2vw, 22px);
+  line-height: 1.65;
+  font-weight: 500;
+  color: var(--deep);
 }
 .story-chapter {
   border-top: 1px solid var(--line);
 }
 .story-chapter > summary {
   padding-left: 0;
+  max-width: 780px;
+  margin-inline: auto;
 }
 .story-chapter h4 {
   font-size: clamp(18px, 2vw, 22px);
@@ -392,7 +402,12 @@ h2 em {
   margin: 0;
 }
 .story-chapter-body {
-  padding-bottom: 28px;
+  max-width: 780px;
+  margin-inline: auto;
+  padding-bottom: 36px;
+}
+.bridgefund-story .story-chapter-body > p {
+  line-height: 1.75;
 }
 .story-takeaway {
   background: #eef5f5;
@@ -400,7 +415,8 @@ h2 em {
   padding: 24px;
   margin-top: 28px;
 }
-.story-takeaway h5 {
+.story-takeaway h5,
+.story-resource h5 {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -418,9 +434,14 @@ h2 em {
   margin-top: 24px;
 }
 .story-resource {
-  border-top: 1px solid var(--line);
-  margin-top: 24px;
-  padding-top: 20px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fbf6ef;
+  margin-top: 16px;
+  padding: 24px;
+}
+.bridgefund-story .story-resource p {
+  font-size: 16px;
 }
 .story-resource-type {
   display: block;
@@ -475,7 +496,8 @@ h2 em {
   .story-chapter > summary {
     padding-left: 0;
   }
-  .story-takeaway {
+  .story-takeaway,
+  .story-resource {
     padding: 18px;
   }
 }
