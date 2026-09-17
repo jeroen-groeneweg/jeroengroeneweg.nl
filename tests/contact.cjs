@@ -12,7 +12,8 @@ const fs = require('node:fs');
       await page.goto(pathToFileURL(path.resolve(__dirname, '../index.html')).href);
       const contact = page.locator('#contact');
       assert.equal(await contact.locator('a').count(), 3);
-      assert.ok(await contact.getByRole('link', { name: 'Email me' }).getAttribute('href') === 'mailto:jeroen.groeneweg@gmail.com');
+      assert.equal(await contact.getByRole('link', { name: 'jeroen.groeneweg@gmail.com' }).getAttribute('href'), 'mailto:jeroen.groeneweg@gmail.com');
+      assert.equal(await contact.evaluate(el => getComputedStyle(el).backgroundColor), 'rgb(246, 238, 227)');
       const pdf = await contact.getByRole('link', { name: 'Download my résumé' }).getAttribute('href');
       assert.equal(fs.readFileSync(path.resolve(__dirname, '..', pdf)).subarray(0, 5).toString(), '%PDF-');
       assert.ok(await contact.evaluate(el => [...el.querySelectorAll('a, h2, p')].every(child => {

@@ -2,7 +2,7 @@
 
 The public portfolio site for Jeroen Groeneweg.
 
-The contact section invites professional and personal conversations, with email, LinkedIn and a downloadable résumé. Its dark teal background echoes the hero; decorative particles animate only when reduced motion is not requested. Run `node tests/contact.cjs` to verify contact links, the PDF asset, responsive fit and reduced-motion behaviour.
+The contact section invites professional and personal conversations, with a prominent email-address link, LinkedIn and a downloadable résumé. It uses the site's light cream background and dark text; decorative particles animate only when reduced motion is not requested. Run `node tests/contact.cjs` to verify contact links, the PDF asset, responsive fit and reduced-motion behaviour.
 
 It is a static site designed for GitHub Pages. Changes merged into `main` deploy through the included GitHub Actions workflow.
 
