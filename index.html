@@ -44,12 +44,13 @@
                 <p>When I joined BridgeFund in January 2023, I found a relatively small company driven by marketing, with around 25 employees and big ambitions. Technology was essential to the business, but responsibility for it was spread across several external suppliers.</p>
                 <p>Around 20 engineers in Sri Lanka handled software development. A supplier in the Netherlands managed IT infrastructure. Another external team with experience in data solutions worked on Databricks, dashboards and data insights. A local web agency maintained the customer onboarding flow. The loan management system had been written by the former CTO, largely by himself and without documentation. The existing CRM lacked the functionality and flexibility the business needed.</p>
                 <p>We were experiencing three to four critical outages a day, during which we could not serve customers. There was little monitoring and very little visibility into what was going wrong. Before we could think about growth, we had to make sure we could reliably serve the customers we already had.</p>
+                <blockquote class="story-pullquote"><p>“Buy what enables you, build what differentiates you.”</p></blockquote>
               </div>
               <details name="bridgefund-chapters" class="story-chapter" id="bridgefund-year-1-chapter-1">
                 <summary><h4>1. Earn the Right to Scale</h4></summary>
                 <div class="story-chapter-body">
                   <p>One of my first steps was to visit the engineering team in Sri Lanka. I needed to meet the people, understand how they worked and find out what was behind the recurring problems. They already had a roadmap of roughly 40 to 50 new features for the year, alongside plans to launch mobile apps. Meanwhile, the existing platform needed constant firefighting.</p>
-                  <p>I halted the entire roadmap. For me, it made no sense to add more features when we couldn’t reliably run what we already had. Every new feature would introduce more complexity into a foundation we didn’t yet understand or control.</p>
+                  <p><strong>I halted the entire roadmap.</strong> For me, it made no sense to add more features when we couldn’t reliably run what we already had. Every new feature would introduce more complexity into a foundation we didn’t yet understand or control.</p>
                   <p>For the three weeks I spent in Sri Lanka, the entire team focused on implementing monitoring, logging and observability across our services. Until then, engineers were responding to individual outages and bugs without a clear picture of the underlying causes. They could get a service running again, but often couldn’t explain why it had failed or prevent it from happening again.</p>
                   <p>Once we could see what was happening, we could direct our effort towards the root causes. Over the following three to six months, that work brought the platform under control. Monitoring didn’t fix the systems by itself. It gave us the information we needed to decide what to fix.</p>
                   <aside class="story-takeaway">
@@ -90,7 +91,7 @@
                 <div class="story-chapter-body">
                   <p>Hiring the team didn’t automatically make it safe to step away from our suppliers. The knowledge still had to move. You never know with complete certainty whether everything relevant has been transferred. We used three practices to make that uncertainty manageable.</p>
                   <p>First, we introduced Backstage to document our services and API endpoints. We needed knowledge to be accessible to the internal team rather than remain in individual people’s heads.</p>
-                  <p>Second, whenever a bug or incident arose, someone from the local engineering team in the Netherlands had to participate in resolving it. I didn’t want an external supplier fixing something on their own and simply informing us afterwards. Working through a real problem reveals details that documentation often misses. You discover dependencies, assumptions and the reasons behind earlier decisions. Those moments became an important part of the handover.</p>
+                  <p>Second, <strong>whenever a bug or incident arose, someone from the local engineering team in the Netherlands had to participate in resolving it.</strong> I didn’t want an external supplier fixing something on their own and simply informing us afterwards. Working through a real problem reveals details that documentation often misses. You discover dependencies, assumptions and the reasons behind earlier decisions. Those moments became an important part of the handover.</p>
                   <p>Third, I asked team members every week how confident they felt about taking ownership. My working threshold was that everyone should reach around seven out of ten. That wasn’t a scientific measure. It was a practical way to discuss uncertainty and avoid basing the decision only on the confidence of the most experienced engineer. Together, documentation, participation and those weekly conversations gave me enough confidence to complete the transition.</p>
                   <aside class="story-takeaway">
                     <h5><svg class="story-label-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 18h6m-5 3h4M8 14a6 6 0 1 1 8 0c-1 1-1 2-1 2H9s0-1-1-2Z"/></svg>What I learned</h5>
@@ -185,6 +186,7 @@
               <div class="story-intro">
                 <p>By the second year, BridgeFund had grown to around 50 people. We had made the major platform decisions, but were still operating the old systems while planning how to replace them. Mambu and HubSpot would affect almost every part of the organisation.</p>
                 <p>At the same time, the business had accumulated a lot of operational complexity. Spreadsheets moved between departments. Information was copied across systems. Product variations and exceptions created additional work. Different data sources sometimes gave conflicting answers. We had an opportunity to do more than migrate software. We could reconsider how the business operated.</p>
+                <blockquote class="story-pullquote"><p>“Buying a standard platform only removes complexity if you are willing to reconsider some of your existing ways of working.”</p></blockquote>
               </div>
               <details name="bridgefund-chapters" class="story-chapter" id="bridgefund-year-2-chapter-1">
                 <summary><h4>1. Make It a Business Transformation</h4></summary>
@@ -247,7 +249,7 @@
               <details name="bridgefund-chapters" class="story-chapter" id="bridgefund-year-2-chapter-4">
                 <summary><h4>4. Put a Chess Clock on the Process</h4></summary>
                 <div class="story-chapter-body">
-                  <p>We couldn’t automate everything at once. We needed to understand where to start and how HubSpot could help. We used what I would describe as a chess clock to measure the waiting time between steps. We counted the handovers between people and departments and looked at where errors kept happening. We were measuring how long an application sat waiting for the next action. That helped us see where the process was getting stuck.</p>
+                  <p>We couldn’t automate everything at once. We needed to understand where to start and how HubSpot could help. We used what I would describe as a chess clock to measure the <strong>waiting time between steps</strong>. We counted the handovers between people and departments and looked at where errors kept happening. We were measuring how long an application sat waiting for the next action. That helped us see where the process was getting stuck.</p>
                   <p>Those findings gave us a practical way to set priorities. We looked for changes that could make the biggest difference for customers and for the business. Which handovers introduced long waits? Where did information get copied or lost? Which activities repeatedly needed correcting?</p>
                   <p>We then identified where we could simplify the work and introduce automation. This gave us a manageable sequence of improvements. We didn’t need to automate every step before making progress.</p>
                   <aside class="story-takeaway">
@@ -284,7 +286,7 @@
               <details name="bridgefund-chapters" class="story-chapter" id="bridgefund-year-2-chapter-6">
                 <summary><h4>6. Prepare in Parallel, Launch in Stages</h4></summary>
                 <div class="story-chapter-body">
-                  <p>Both Mambu and HubSpot represented substantial changes. We had one team working on each implementation, and preparation ran in parallel. We deliberately kept the actual migrations separate. Each platform affected enough of the organisation on its own. Launching both together would have introduced too much change at once.</p>
+                  <p>Both Mambu and HubSpot represented substantial changes. We had one team working on each implementation, and preparation ran in parallel. <strong>We deliberately kept the actual migrations separate.</strong> Each platform affected enough of the organisation on its own. Launching both together would have introduced too much change at once.</p>
                   <p>Mambu came first. Within that implementation, we started with funding, the smaller part of the business. It represented roughly 10 to 20 percent of our processes and business. Once that was live and working, we moved into the lending phase.</p>
                   <p>The implementation and migration work stretched across the year. Mambu first went live around the summer, with HubSpot following around October or November. Those launches were milestones in a longer programme. They weren’t the point at which every process became fully automated. Some steps remained manual after launch. We continued improving them, gradually introducing more automation as we worked through the priorities. As the platforms took over functions previously handled by our own systems, we were also able to remove around 80 percent of the old codebase, much of which represented legacy complexity and technical debt.</p>
                   <aside class="story-takeaway">
@@ -382,6 +384,7 @@
               <div class="story-intro">
                 <p>By the start of year three, we had a different business to work with. Mambu and HubSpot were in place, we had moved away from our previous external suppliers, and we had built our local engineering team in the Netherlands. The technical foundation was stable. We could finally spend more of our attention on delivering value instead of keeping everything running.</p>
                 <p>That changed the questions we needed to ask. How could we help more entrepreneurs? What was stopping customers from completing their application? How could we improve the experience for existing customers? And how could we increase our delivery speed without losing control?</p>
+                <blockquote class="story-pullquote"><p>“Give teams an outcome to improve, not just a list of features to deliver.”</p></blockquote>
               </div>
               <details name="bridgefund-chapters" class="story-chapter" id="bridgefund-year-3-chapter-1">
                 <summary><h4>1. Give Security and Compliance Clear Ownership</h4></summary>
@@ -407,7 +410,7 @@
                 <div class="story-chapter-body">
                   <p>During the first two years, much of our attention had gone into the technology and processes behind the business. With that foundation in place, we could look more closely at how customers actually experienced our services.</p>
                   <p>We started using A/B testing, reviewing our application flows and speaking with customers. We also listened to sales conversations. Those calls helped us understand what customers were trying to achieve, what they found confusing and which concerns came up before they were ready to continue.</p>
-                  <p>This gave us more context for deciding what to improve. We could combine what the data showed with what customers were telling us, rather than choosing features based only on our own assumptions.</p>
+                  <p>This gave us more context for deciding what to improve. <strong>We could combine what the data showed with what customers were telling us</strong>, rather than choosing features based only on our own assumptions.</p>
                   <aside class="story-takeaway">
                     <h5><svg class="story-label-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 18h6m-5 3h4M8 14a6 6 0 1 1 8 0c-1 1-1 2-1 2H9s0-1-1-2Z"/></svg>What I learned</h5>
                     <p>Customer conversations help explain the behaviour you see in your data. You need both to understand what to improve.</p>
@@ -507,7 +510,7 @@
                 <div class="story-chapter-body">
                   <p>Our understanding of credit risk also needed to develop. Making a decision at the start of a customer relationship was only part of the picture. We needed better insight into the health of our outstanding portfolio: which customers were doing well, which might be heading towards difficulties and where we could help before those difficulties became a bigger problem.</p>
                   <p>We continued refining our credit risk models and probability of default estimates. Alongside that, ongoing access to bank transaction data, where customers maintained their consent, helped us monitor changes in their financial situation. This gave us a more current view of our customer base and the portfolio we were managing.</p>
-                  <p>We combined automated monitoring with review by our risk team. The aim was to automate as much as we responsibly could, while keeping people involved where the risk called for closer attention. Some signals were handled automatically, while higher-risk situations needed the team’s judgement and manual action.</p>
+                  <p><strong>We combined automated monitoring with review by our risk team.</strong> The aim was to automate as much as we responsibly could, while keeping people involved where the risk called for closer attention. Some signals were handled automatically, while higher-risk situations needed the team’s judgement and manual action.</p>
                   <p>Depending on the situation, we could lower a credit limit or restrict further withdrawals to prevent exposure from increasing. If a customer had fallen behind on repayments, we could also reach out and work with them to find a way forward.</p>
                   <p>These were two related responsibilities: managing our credit exposure and supporting customers experiencing difficulties. Better visibility helped us make more informed decisions about both. Preventing a customer from reaching default could benefit their business as well as ours.</p>
                   <aside class="story-takeaway">
@@ -551,6 +554,7 @@
                 <p>Year three had been our first profitable year, with around €1 million in profit. For year four, our ambition was to grow that to around €20 million. We also wanted to increase our outstanding lending volume, serve more active customers and grow the average outstanding balance per customer.</p>
                 <p>With the company growing towards 180 FTE, we needed to deliver more value through both our products and our technology. We had a stable foundation and the first version of My BridgeFund. The next challenge was to increase what we could achieve with that foundation, without losing the control we had worked hard to establish.</p>
                 <p>This part of the story is still unfolding. The profit figure is a target, and some of the work described here is underway rather than complete.</p>
+                <blockquote class="story-pullquote"><p>“Being able to generate a change did not automatically make it ready to merge.”</p></blockquote>
               </div>
               <details name="bridgefund-chapters" class="story-chapter" id="bridgefund-year-4-chapter-1">
                 <summary><h4>1. Keep Customer Understanding Close to Delivery</h4></summary>
@@ -575,7 +579,7 @@
                 <summary><h4>2. Be Honest About How the Work Will Change</h4></summary>
                 <div class="story-chapter-body">
                   <p>Adopting agentic engineering was not an easy transition. Some engineers worried that AI would take their jobs. Before we could meaningfully change our workflow, we needed to address that concern.</p>
-                  <p>I explained that we were introducing AI to change how we worked, not as a plan to replace the team. At the same time, I was clear that learning to use it would become part of the role. Refusing to participate in that change could eventually put someone’s position at risk. I wanted people to understand both the opportunity and the expectation.</p>
+                  <p>I explained that we were introducing AI to change how we worked, not as a plan to replace the team. At the same time, I was clear that <strong>learning to use it would become part of the role</strong>. Refusing to participate in that change could eventually put someone’s position at risk. I wanted people to understand both the opportunity and the expectation.</p>
                   <p>On the technical side, we started small. We experimented with tools including ChatGPT, Claude Code and Codex, exploring how they could support our work. But adopting a tool was only the beginning. Becoming an agentic engineering team would require changes to our processes, documentation and the way we reviewed software.</p>
                   <aside class="story-takeaway">
                     <h5><svg class="story-label-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 18h6m-5 3h4M8 14a6 6 0 1 1 8 0c-1 1-1 2-1 2H9s0-1-1-2Z"/></svg>What I learned</h5>
@@ -653,7 +657,7 @@
                 <summary><h4>6. Revisit Your Build Versus Buy Decisions</h4></summary>
                 <div class="story-chapter-body">
                   <p>Reconciliation was another area that needed attention. We were still relying on an internally built service and manual work to support our financial operations.</p>
-                  <p>Looking at it again, we concluded that this should be a bought capability. We had made build versus buy decisions earlier in the transformation, but that did not mean every decision had been right or every service had received enough scrutiny.</p>
+                  <p>Looking at it again, <strong>we concluded that this should be a bought capability</strong>. We had made build versus buy decisions earlier in the transformation, but that did not mean every decision had been right or every service had received enough scrutiny.</p>
                   <p>We began exploring how to move reconciliation to an external solution and professionalise the process. For me, this was an opportunity to correct an earlier choice rather than continue maintaining it simply because it already existed. The principle from year one still applied: buy what enables you and build what differentiates you.</p>
                   <aside class="story-takeaway">
                     <h5><svg class="story-label-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 18h6m-5 3h4M8 14a6 6 0 1 1 8 0c-1 1-1 2-1 2H9s0-1-1-2Z"/></svg>What I learned</h5>
