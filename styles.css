@@ -296,6 +296,115 @@ h2 em {
 .bridgefund-story p + p {
   margin-top: 24px;
 }
+.story-year {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.story-year + .story-year {
+  margin-top: 20px;
+}
+.bridgefund-story summary {
+  cursor: pointer;
+  position: relative;
+  list-style: none;
+  padding: 24px 60px 24px 28px;
+}
+.bridgefund-story summary::-webkit-details-marker {
+  display: none;
+}
+.bridgefund-story summary::after {
+  content: "+";
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--teal);
+  font-size: 26px;
+  line-height: 1;
+}
+.bridgefund-story details[open] > summary::after {
+  content: "−";
+}
+.bridgefund-story summary:focus-visible {
+  outline: 3px solid var(--violet);
+  outline-offset: -4px;
+}
+.story-year > summary {
+  background: #eef5f5;
+}
+.story-year-date {
+  display: block;
+  color: var(--teal);
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.story-year h3 {
+  font-size: clamp(22px, 3vw, 30px);
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+.story-year-body {
+  padding: 0 28px 12px;
+}
+.story-intro {
+  padding: 28px 0;
+}
+.story-chapter {
+  border-top: 1px solid var(--line);
+}
+.story-chapter > summary {
+  padding-left: 0;
+}
+.story-chapter h4 {
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.4;
+  margin: 0;
+}
+.story-chapter-body {
+  padding-bottom: 28px;
+}
+.story-takeaway {
+  background: #eef5f5;
+  border-left: 3px solid var(--teal);
+  padding: 24px;
+  margin-top: 28px;
+}
+.story-takeaway h5 {
+  color: var(--teal);
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 0 0 10px;
+}
+.story-takeaway p + h5 {
+  margin-top: 24px;
+}
+.story-chapter-body ol {
+  font-size: 17px;
+  line-height: 1.6;
+  padding-left: 1.5em;
+  margin: 24px 0;
+}
+.story-chapter-body li + li {
+  margin-top: 10px;
+}
+@media (max-width: 600px) {
+  .bridgefund-story summary {
+    padding: 20px 44px 20px 16px;
+  }
+  .bridgefund-story summary::after {
+    right: 16px;
+  }
+  .story-year-body {
+    padding: 0 16px 8px;
+  }
+  .story-chapter > summary {
+    padding-left: 0;
+  }
+  .story-takeaway {
+    padding: 18px;
+  }
+}
 .transformation-ingredients {
   border-top: 1px solid var(--line);
   margin-top: 48px;
