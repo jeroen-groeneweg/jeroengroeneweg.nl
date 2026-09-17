@@ -12,6 +12,7 @@ const fs = require('node:fs');
       await page.goto(pathToFileURL(path.resolve(__dirname, '../index.html')).href);
       const contact = page.locator('#contact');
       assert.equal(await contact.locator('a').count(), 3);
+      assert.equal(await contact.getByRole('link', { name: 'Connect on LinkedIn' }).locator('svg[aria-hidden="true"]').count(), 1);
       assert.equal(await contact.getByRole('link', { name: 'jeroen.groeneweg@gmail.com' }).getAttribute('href'), 'mailto:jeroen.groeneweg@gmail.com');
       assert.equal(await contact.evaluate(el => getComputedStyle(el).backgroundColor), 'rgb(246, 238, 227)');
       const pdf = await contact.getByRole('link', { name: 'Download my résumé' }).getAttribute('href');

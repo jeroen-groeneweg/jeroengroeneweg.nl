@@ -1037,9 +1037,16 @@ h2 em {
   margin: 32px 0;
 }
 .contact-secondary {
+  gap: 12px;
   background: transparent;
   color: var(--ink);
   border: 1px solid var(--teal);
+}
+.linkedin-icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  fill: currentColor;
 }
 .contact-download {
   padding: 14px 0;
