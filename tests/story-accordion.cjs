@@ -32,6 +32,7 @@ async function main() {
       };
       assert.equal(await openCount(), 0);
       await activate(year(1), 'Enter');
+      await expectAligned(year(1));
       await activate(chapter(1), 'Space');
       await expectOpen(chapter(1), true);
       await expectAligned(chapter(1));
@@ -51,12 +52,14 @@ async function main() {
       await expectOpen(chapter(2), false);
       assert.equal(await openCount(), 2);
       await year(2).locator(':scope > summary').click();
+      await expectAligned(year(2));
       await expectOpen(year(1), false);
       await page.waitForFunction(() =>
         document.querySelectorAll('.story-year:not([open]) details[open]').length === 0,
       );
       assert.equal(await openCount(), 1);
       await activate(year(1), 'Enter');
+      await expectAligned(year(1));
       await expectOpen(year(2), false);
       assert.equal(await openCount(), 1);
       await activate(chapter(1), 'Enter');

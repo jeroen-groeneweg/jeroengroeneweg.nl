@@ -10,15 +10,15 @@ document.querySelectorAll('.story-year').forEach((year) => {
   });
 });
 
-// Wait for the sibling chapter to close and the layout to settle before
+// Wait for sibling content to close and the layout to settle before
 // placing the newly opened heading below the fixed navigation.
-document.querySelectorAll('.story-chapter').forEach((chapter) => {
-  chapter.addEventListener('toggle', () => {
-    if (!chapter.open) return;
+document.querySelectorAll('.story-year, .story-chapter').forEach((section) => {
+  section.addEventListener('toggle', () => {
+    if (!section.open) return;
     window.requestAnimationFrame(() => {
       window.requestAnimationFrame(() => {
-        if (!chapter.open || !chapter.closest('.story-year').open) return;
-        const summary = chapter.querySelector(':scope > summary');
+        if (!section.open || !section.closest('.story-year').open) return;
+        const summary = section.querySelector(':scope > summary');
         const nav = document.querySelector('.nav');
         const offset = (nav ? nav.getBoundingClientRect().height : 0) + 16;
         window.scrollTo({
