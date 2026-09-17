@@ -42,103 +42,132 @@
             <div class="story-year-body">
               <div class="story-intro">
                 <p>When joining BridgeFund in Januari 2023, I found a relatively small, marketing driven company with around 25 employees with skyhigh ambitions! Technology was essential to the business, but responsibility for it was spread across several external suppliers.</p>
-                <p>Around 20 engineers in Sri Lanka handled software development. A supplier in the Netherlands managed IT infrastructure. Another external team, experienced in data solutions worked on Databricks, dashboards and data insights. A local web agency maintained the customer onboarding flow.</p>
-                <p>The loan management system had been written by the former CTO, largely by himself and without documentation. The existing CRM lacked the functionality and flexibility the business needed.</p>
-                <p>We were experiencing three to four critical outages a day, during which we could not serve customers. There was little monitoring and very little visibility into what was going wrong.</p>
-                <p>Before we could think about growth, we had to make sure we could reliably serve the customers we already had.</p>
+                <p>Around 20 engineers in Sri Lanka handled software development. A supplier in the Netherlands managed IT infrastructure. Another external team, experienced in data solutions worked on Databricks, dashboards and data insights. A local web agency maintained the customer onboarding flow. The loan management system had been written by the former CTO, largely by himself and without documentation. The existing CRM lacked the functionality and flexibility the business needed.</p>
+                <p>We were experiencing three to four critical outages a day, during which we could not serve customers. There was little monitoring and very little visibility into what was going wrong. Before we could think about growth, we had to make sure we could reliably serve the customers we already had.</p>
               </div>
               <details class="story-chapter" id="bridgefund-year-1-chapter-1">
                 <summary><h4>1. Earn the Right to Scale</h4></summary>
                 <div class="story-chapter-body">
-                <p>One of my first steps was to visit the engineering team in Sri Lanka. I needed to meet the people, understand how they worked and find out what was behind the recurring problems.</p>
-                <p>They already had a roadmap of roughly 40 to 50 new features for the year, alongside plans to launch mobile apps. Meanwhile, the existing platform needed constant firefighting.</p>
-                <p>I halted the entire roadmap.</p>
-                <p>For me, it made no sense to add more features when we couldn’t reliably run what we already had. Every new feature would introduce more complexity into a foundation we didn’t yet understand or control.</p>
-                <p>For the three weeks I spent in Sri Lanka, the entire team focused on implementing monitoring, logging and observability across our services.</p>
-                <p>Until then, engineers were responding to individual outages and bugs without a clear picture of the underlying causes. They could get a service running again, but often couldn’t explain why it had failed or prevent it from happening again.</p>
-                <p>Once we could see what was happening, we could direct our effort towards the root causes. Over the following three to six months, that work brought the platform under control.</p>
-                <p>Monitoring didn’t fix the systems by itself. It gave us the information we needed to decide what to fix.</p>
-                  <aside class="story-takeaway"><h5>What I learned</h5><p>Sometimes the most valuable decision you can make is to stop planned work. When customers cannot consistently use your service, restoring reliability deserves the full attention of the team.</p><h5>A question worth asking</h5><p>Can your team explain why incidents happen, or are they repeatedly restoring service without resolving the cause?</p></aside>
+                  <p>One of my first steps was to visit the engineering team in Sri Lanka. I needed to meet the people, understand how they worked and find out what was behind the recurring problems. They already had a roadmap of roughly 40 to 50 new features for the year, alongside plans to launch mobile apps. Meanwhile, the existing platform needed constant firefighting.</p>
+                  <p>I halted the entire roadmap. For me, it made no sense to add more features when we couldn’t reliably run what we already had. Every new feature would introduce more complexity into a foundation we didn’t yet understand or control.</p>
+                  <p>For the three weeks I spent in Sri Lanka, the entire team focused on implementing monitoring, logging and observability across our services. Until then, engineers were responding to individual outages and bugs without a clear picture of the underlying causes. They could get a service running again, but often couldn’t explain why it had failed or prevent it from happening again.</p>
+                  <p>Once we could see what was happening, we could direct our effort towards the root causes. Over the following three to six months, that work brought the platform under control. Monitoring didn’t fix the systems by itself. It gave us the information we needed to decide what to fix.</p>
+                  <aside class="story-takeaway">
+                    <h5>What I learned</h5>
+                    <p>Sometimes the most valuable decision you can make is to stop planned work. When customers cannot consistently use your service, restoring reliability deserves the full attention of the team. The important part was giving the team a clear priority and enough time to investigate. Collecting more logs only became valuable when we used that information to decide what to fix next.</p>
+                    <h5>A question worth asking</h5>
+                    <p>Can your team explain why incidents happen, or are they repeatedly restoring service without resolving the cause? Take a recent recurring incident and ask what changed after the last repair. Is there evidence that the underlying problem has been addressed?</p>
+                    <div class="story-resource">
+                      <h5>Further reading</h5>
+                      <p><span class="story-resource-type">Free book chapter</span><a href="https://sre.google/sre-book/monitoring-distributed-systems/">Monitoring Distributed Systems</a> from Google’s <cite>Site Reliability Engineering</cite>.</p>
+                      <p>Explains how monitoring can reveal customer impact and help distinguish symptoms from causes. A useful starting point when deciding what your team actually needs to observe.</p>
+                    </div>
+                  </aside>
                 </div>
               </details>
               <details class="story-chapter" id="bridgefund-year-1-chapter-2">
                 <summary><h4>2. Build a Team That Owns the Outcome</h4></summary>
                 <div class="story-chapter-body">
-                <p>The visit to Sri Lanka also changed my understanding of our delivery model.</p>
-                <p>The engineers were building what they had been asked to build. But testing, monitoring and observability hadn’t been established as clear expectations. Neither had questioning a proposed solution or suggesting a better approach.</p>
-                <p>There were differences in working culture and expectations that we hadn’t sufficiently accounted for. The way work was briefed said a lot about the results we were getting.</p>
-                <p>For BridgeFund’s next stage, I wanted engineers close to our customers, colleagues and internal stakeholders. People who understood what we were trying to achieve, questioned requests that didn’t make sense and came back with better ideas.</p>
-                <p>That shaped the decision to build our local engineering team in the Netherlands.</p>
-                <p>We allowed six months to recruit and transfer knowledge. During that period, the local team worked alongside the engineers in Sri Lanka. By the end of the first year, we had around ten engineers in the Netherlands and had phased out the offshore team.</p>
-                <p>We took a similar approach to other capabilities.</p>
-                <p>We hired an IT service desk colleague to take responsibility for employee devices and a DevOps engineer to manage our AWS platform and Kubernetes cluster. That enabled us to phase out the external infrastructure supplier.</p>
-                <p>We brought in data engineers and data scientists to take ownership of Databricks and our data capabilities.</p>
-                <p>We also hired frontend developers and a product manager to bring the onboarding flow under our own management. The customer journey was one of the areas where we believed we could differentiate, so we wanted the people developing it close to the business.</p>
-                <p>The objective was to establish internal responsibility for the capabilities we depended on. Ending supplier relationships followed from having the people and knowledge to take that responsibility ourselves.</p>
-                  <aside class="story-takeaway"><h5>What I learned</h5><p>Hiring internally only works if people also get the context and responsibility to make good decisions. I wanted a team that understood the problem behind a request and cared about what happened after delivering it.</p><h5>A question worth asking</h5><p>Which capabilities does your organisation need to understand deeply enough to operate, challenge and improve for itself?</p></aside>
+                  <p>The visit to Sri Lanka also changed my understanding of our delivery model. The engineers were building what they had been asked to build. But testing, monitoring and observability hadn’t been established as clear expectations. Neither had questioning a proposed solution or suggesting a better approach. There were differences in working culture and expectations that we hadn’t sufficiently accounted for. The way work was briefed said a lot about the results we were getting.</p>
+                  <p>For BridgeFund’s next stage, I wanted engineers close to our customers, colleagues and internal stakeholders. People who understood what we were trying to achieve, questioned requests that didn’t make sense and came back with better ideas. That shaped the decision to build our local engineering team in the Netherlands. We allowed six months to recruit and transfer knowledge. During that period, the local team worked alongside the engineers in Sri Lanka. By the end of the first year, we had around ten engineers in the Netherlands and had phased out the offshore team.</p>
+                  <p>We took a similar approach to other capabilities. We hired an IT service desk colleague to take responsibility for employee devices and a DevOps engineer to manage our AWS platform and Kubernetes cluster. That enabled us to phase out the external infrastructure supplier. We brought in data engineers and data scientists to take ownership of Databricks and our data capabilities.</p>
+                  <p>We also hired frontend developers and a product manager to bring the onboarding flow under our own management. The customer journey was one of the areas where we believed we could differentiate, so we wanted the people developing it close to the business. The objective was to establish internal responsibility for the capabilities we depended on. Ending supplier relationships followed from having the people and knowledge to take that responsibility ourselves.</p>
+                  <aside class="story-takeaway">
+                    <h5>What I learned</h5>
+                    <p>Hiring internally only works if people also get the context and responsibility to make good decisions. I wanted a team that understood the problem behind a request and cared about what happened after delivering it. For us, proximity helped build that understanding, but location alone was never enough. People also needed clear expectations around quality and the freedom to challenge a request.</p>
+                    <h5>A question worth asking</h5>
+                    <p>Which capabilities does your organisation need to understand deeply enough to operate, challenge and improve for itself? For each capability, consider who can make a decision, who understands the customer impact and who takes responsibility when something fails.</p>
+                    <div class="story-resource">
+                      <h5>Further reading</h5>
+                      <p><span class="story-resource-type">Book</span><a href="https://teamtopologies.com/book">Team Topologies</a> by Matthew Skelton and Manuel Pais.</p>
+                      <p>Explores team responsibilities, interactions and the amount of complexity a team can handle. Useful background when deciding how to organise ownership as your engineering team grows.</p>
+                    </div>
+                  </aside>
                 </div>
               </details>
               <details class="story-chapter" id="bridgefund-year-1-chapter-3">
                 <summary><h4>3. Transfer the Ability to Solve Problems</h4></summary>
                 <div class="story-chapter-body">
-                <p>Hiring the team didn’t automatically make it safe to step away from our suppliers. The knowledge still had to move.</p>
-                <p>You never know with complete certainty whether everything relevant has been transferred. We used three practices to make that uncertainty manageable.</p>
-                <p>First, we introduced Backstage to document our services and API endpoints. We needed knowledge to be accessible to the internal team rather than remain in individual people’s heads.</p>
-                <p>Second, whenever a bug or incident arose, someone from the local engineering team in the Netherlands had to participate in resolving it. I didn’t want an external supplier fixing something on their own and simply informing us afterwards.</p>
-                <p>Working through a real problem reveals details that documentation often misses. You discover dependencies, assumptions and the reasons behind earlier decisions. Those moments became an important part of the handover.</p>
-                <p>Third, I asked team members every week how confident they felt about taking ownership. My working threshold was that everyone should reach around seven out of ten.</p>
-                <p>That wasn’t a scientific measure. It was a practical way to discuss uncertainty and avoid basing the decision only on the confidence of the most experienced engineer.</p>
-                <p>Together, documentation, participation and those weekly conversations gave me enough confidence to complete the transition.</p>
-                  <aside class="story-takeaway"><h5>What I learned</h5><p>Don’t let an external supplier resolve a problem without someone from your own team involved. Every incident is also an opportunity to develop the knowledge your team will eventually need.</p><h5>A question worth asking</h5><p>If the supplier became unavailable tomorrow, could your team investigate a problem and resolve it?</p></aside>
+                  <p>Hiring the team didn’t automatically make it safe to step away from our suppliers. The knowledge still had to move. You never know with complete certainty whether everything relevant has been transferred. We used three practices to make that uncertainty manageable.</p>
+                  <p>First, we introduced Backstage to document our services and API endpoints. We needed knowledge to be accessible to the internal team rather than remain in individual people’s heads.</p>
+                  <p>Second, whenever a bug or incident arose, someone from the local engineering team in the Netherlands had to participate in resolving it. I didn’t want an external supplier fixing something on their own and simply informing us afterwards. Working through a real problem reveals details that documentation often misses. You discover dependencies, assumptions and the reasons behind earlier decisions. Those moments became an important part of the handover.</p>
+                  <p>Third, I asked team members every week how confident they felt about taking ownership. My working threshold was that everyone should reach around seven out of ten. That wasn’t a scientific measure. It was a practical way to discuss uncertainty and avoid basing the decision only on the confidence of the most experienced engineer. Together, documentation, participation and those weekly conversations gave me enough confidence to complete the transition.</p>
+                  <aside class="story-takeaway">
+                    <h5>What I learned</h5>
+                    <p>Don’t let an external supplier resolve a problem without someone from your own team involved. Every incident is also an opportunity to develop the knowledge your team will eventually need. The overlap gave us opportunities to learn while experienced people were still available. Confidence scores helped expose uncertainty, but they needed to sit alongside participation in real work.</p>
+                    <h5>A question worth asking</h5>
+                    <p>If the supplier became unavailable tomorrow, could your team investigate a problem and resolve it? Walk through a recent incident together. Where would the local team still need help, and which of those gaps could you address during the next part of the handover?</p>
+                    <div class="story-resource">
+                      <h5>Further reading</h5>
+                      <p><span class="story-resource-type">Free book chapter</span><a href="https://sre.google/sre-book/postmortem-culture/">Postmortem Culture: Learning from Failure</a> by John Lunney and Sue Lueder, from Google’s <cite>Site Reliability Engineering</cite>.</p>
+                      <p>Describes how incident reviews can turn individual experience into shared knowledge and follow-up work. It offers useful ideas for capturing what a team learns while solving problems.</p>
+                    </div>
+                  </aside>
                 </div>
               </details>
               <details class="story-chapter" id="bridgefund-year-1-chapter-4">
                 <summary><h4>4. Buy What Enables You. Build What Differentiates You.</h4></summary>
                 <div class="story-chapter-body">
-                <p>As we gained control over the platform, we could address a more fundamental question: why were we building so much of it ourselves?</p>
-                <p>We were maintaining a loan management system, extending a limited CRM and developing the services around them. That consumed engineering capacity and made change difficult.</p>
-                <p>I wanted us to be explicit about where our own technology could give BridgeFund an advantage.</p>
-                <p>Providing loans and credit lines was our core business. But writing our own loan management software wasn’t necessarily what would make us a better lender.</p>
-                <p>That distinction led to two major decisions: adopting Mambu as our core banking platform and HubSpot as our main CRM.</p>
-                <p>These were capabilities we needed to operate. We could buy proven software for them and focus our own development effort on the areas where we believed we could make a difference.</p>
-                <p>The first was customer experience. That included our marketing website, onboarding flow and the My BridgeFund environment, where customers could manage their loans or credit lines.</p>
-                <p>The second was credit decisioning. If we could use data to understand creditworthiness better, that could become a meaningful competitive advantage.</p>
-                <p>By the end of the first year, we had made those decisions and started planning the implementations. We were still running the legacy systems. The migrations would be substantial pieces of work, with consequences far beyond technology.</p>
-                  <aside class="story-takeaway"><h5>What I learned</h5><p>A capability can be central to your business without needing to be built from scratch. I wanted our engineering effort concentrated where it could create a distinctive advantage.</p><h5>A question worth asking</h5><p>Where does your custom software give you an advantage, and where are you maintaining something an established platform could provide?</p></aside>
+                  <p>As we gained control over the platform, we could address a more fundamental question: why were we building so much of it ourselves? We were maintaining a loan management system, extending a limited CRM and developing the services around them. That consumed engineering capacity and made change difficult.</p>
+                  <p>I wanted us to be explicit about where our own technology could give BridgeFund an advantage. Providing loans and credit lines was our core business. But writing our own loan management software wasn’t necessarily what would make us a better lender.</p>
+                  <p>That distinction led to two major decisions: adopting Mambu as our core banking platform and HubSpot as our main CRM. These were capabilities we needed to operate. We could buy proven software for them and focus our own development effort on the areas where we believed we could make a difference.</p>
+                  <p>The first was customer experience. That included our marketing website, onboarding flow and the My BridgeFund environment, where customers could manage their loans or credit lines. The second was credit decisioning. If we could use data to understand creditworthiness better, that could become a meaningful competitive advantage.</p>
+                  <p>By the end of the first year, we had made those decisions and started planning the implementations. We were still running the legacy systems. The migrations would be substantial pieces of work, with consequences far beyond technology.</p>
+                  <aside class="story-takeaway">
+                    <h5>What I learned</h5>
+                    <p>A capability can be central to your business without needing to be built from scratch. I wanted our engineering effort concentrated where it could create a distinctive advantage. The initial development effort is only part of that decision. Every custom system also brings maintenance, support and knowledge that the team must keep available as the business grows.</p>
+                    <h5>A question worth asking</h5>
+                    <p>Where does your custom software give you an advantage, and where are you maintaining something an established platform could provide? Include the cost of operating and changing the system in your answer. What could the team work on if an established platform handled that capability?</p>
+                    <div class="story-resource">
+                      <h5>Further reading</h5>
+                      <p><span class="story-resource-type">Article</span><a href="https://mcfunley.com/choose-boring-technology">Choose Boring Technology</a> by Dan McKinley.</p>
+                      <p>Discusses the limited capacity organisations have for unfamiliar technology. It offers another way to think about where custom solutions and additional complexity are worth the effort.</p>
+                    </div>
+                  </aside>
                 </div>
               </details>
               <details class="story-chapter" id="bridgefund-year-1-chapter-5">
                 <summary><h4>5. Establish Ownership of Your Data</h4></summary>
                 <div class="story-chapter-body">
-                <p>Our ambition to improve credit decisioning required an internal data capability.</p>
-                <p>We hired data engineers and data scientists, brought Databricks under their ownership and started addressing the quality of the data available to us.</p>
-                <p>Our direction was to use PSD2 transaction data to assess a potential customer’s creditworthiness. We wanted to understand what that data could tell us, rather than depend on collecting financial statements and asking customers to explain their business through conversations.</p>
-                <p>That gave us a clear reason to develop our own machine learning models. But it also made the quality of the underlying data essential.</p>
-                <p>You cannot expect reliable decisions from unreliable inputs. Before getting carried away with what AI might do, we needed people who understood the data and could take responsibility for it.</p>
-                <p>This was the beginning of that work. The detailed preparation for our migrations in year two would expose how much cleaning, deduplication and standardisation was still needed.</p>
-                  <aside class="story-takeaway"><h5>What I learned</h5><p>Start with ownership and data quality. Those are ongoing responsibilities, and they need attention before you can expect useful results from models built on top of them.</p><h5>A question worth asking</h5><p>Do you understand the quality and limitations of the data informing your decisions?</p></aside>
+                  <p>Our ambition to improve credit decisioning required an internal data capability. We hired data engineers and data scientists, brought Databricks under their ownership and started addressing the quality of the data available to us.</p>
+                  <p>Our direction was to use PSD2 transaction data to assess a potential customer’s creditworthiness. We wanted to understand what that data could tell us, rather than depend on collecting financial statements and asking customers to explain their business through conversations. That gave us a clear reason to develop our own machine learning models. But it also made the quality of the underlying data essential.</p>
+                  <p>You cannot expect reliable decisions from unreliable inputs. Before getting carried away with what AI might do, we needed people who understood the data and could take responsibility for it. This was the beginning of that work. The detailed preparation for our migrations in year two would expose how much cleaning, deduplication and standardisation was still needed.</p>
+                  <aside class="story-takeaway">
+                    <h5>What I learned</h5>
+                    <p>Start with ownership and data quality. Those are ongoing responsibilities, and they need attention before you can expect useful results from models built on top of them. Hiring specialists gave us people who could investigate those limitations and work on them. It also made clear that dependable data required continued attention, rather than a single cleanup project.</p>
+                    <h5>A question worth asking</h5>
+                    <p>Do you understand the quality and limitations of the data informing your decisions? Choose an important data field and trace it from its origin to a report or model. Who understands its definition, and who investigates when it looks wrong?</p>
+                    <div class="story-resource">
+                      <h5>Further reading</h5>
+                      <p><span class="story-resource-type">Book</span><a href="https://www.oreilly.com/library/view/fundamentals-of-data/9781098108298/">Fundamentals of Data Engineering</a> by Joe Reis and Matt Housley.</p>
+                      <p>Covers the data lifecycle from its sources through to its consumers. Useful context for understanding why data engineering involves ownership and business requirements as well as tools.</p>
+                    </div>
+                  </aside>
                 </div>
               </details>
               <details class="story-chapter" id="bridgefund-year-1-chapter-6">
                 <summary><h4>6. Take Ownership Before Deciding What to Rebuild</h4></summary>
                 <div class="story-chapter-body">
-                <p>Bringing onboarding in-house gave us responsibility for a part of the business that directly affected customers.</p>
-                <p>It also meant inheriting a substantial legacy PHP application.</p>
-                <p>Taking ownership didn’t immediately remove its limitations. It put us in a position to understand the application, maintain it and make informed decisions about its future.</p>
-                <p>PHP itself wasn’t the issue. What mattered was whether we had the people, knowledge and technical foundation to develop the experience we wanted.</p>
-                <p>As the platform became stable, we could introduce product capability and spend more time on those questions. We were beginning to move beyond responding to failures and towards deliberately improving the customer journey.</p>
-                <p>The decisions about how to modernise onboarding would follow in year two.</p>
-                  <aside class="story-takeaway"><h5>What I learned</h5><p>Taking responsibility for a system and replacing it are separate decisions. Understanding what you have gives you a better basis for deciding what should change.</p><h5>A question worth asking</h5><p>Have you built the team that will own the application before committing to how it should be rebuilt?</p></aside>
+                  <p>Bringing onboarding in-house gave us responsibility for a part of the business that directly affected customers. It also meant inheriting a substantial legacy PHP application. Taking ownership didn’t immediately remove its limitations. It put us in a position to understand the application, maintain it and make informed decisions about its future.</p>
+                  <p>PHP itself wasn’t the issue. What mattered was whether we had the people, knowledge and technical foundation to develop the experience we wanted. As the platform became stable, we could introduce product capability and spend more time on those questions. We were beginning to move beyond responding to failures and towards deliberately improving the customer journey. The decisions about how to modernise onboarding would follow in year two.</p>
+                  <aside class="story-takeaway">
+                    <h5>What I learned</h5>
+                    <p>Taking responsibility for a system and replacing it are separate decisions. Understanding what you have gives you a better basis for deciding what should change. Bringing the application in-house gave us the chance to understand it before choosing the next step. That knowledge mattered regardless of whether we kept parts of it or replaced them.</p>
+                    <h5>A question worth asking</h5>
+                    <p>Have you built the team that will own the application before committing to how it should be rebuilt? Ask the team which behaviour must be preserved and which constraints actually make changes difficult. Those answers can help separate a necessary improvement from a preference for newer technology.</p>
+                    <div class="story-resource">
+                      <h5>Further reading</h5>
+                      <p><span class="story-resource-type">Book</span><a href="https://www.informit.com/store/working-effectively-with-legacy-code-9780132931779">Working Effectively with Legacy Code</a> by Michael Feathers.</p>
+                      <p>Offers techniques for understanding and changing existing code, including working with tests and dependencies. A practical companion when a team inherits an application it did not build.</p>
+                    </div>
+                  </aside>
                 </div>
               </details>
               <details class="story-chapter story-recap">
                 <summary><h4>Where We Stood at the End of Year One</h4></summary>
                 <div class="story-chapter-body">
-                <p>We had brought the platform under control and established internal capabilities across engineering, infrastructure, data and product.</p>
-                <p>The local engineering team in the Netherlands had taken over from the offshore team. Other internal colleagues had taken responsibility for capabilities previously managed by external suppliers.</p>
-                <p>We had chosen Mambu and HubSpot, but we hadn’t completed the transition. The legacy systems were still there, and substantial migration work lay ahead.</p>
-                <p>What had changed was our ability to take responsibility for that work. We had a clearer understanding of the systems, a team that could own them and a direction for where we wanted to invest.</p>
-                <p>Four principles shaped that first year:</p>
+                  <p>We had brought the platform under control and established internal capabilities across engineering, infrastructure, data and product. The local engineering team in the Netherlands had taken over from the offshore team. Other internal colleagues had taken responsibility for capabilities previously managed by external suppliers.</p>
+                  <p>We had chosen Mambu and HubSpot, but we hadn’t completed the transition. The legacy systems were still there, and substantial migration work lay ahead. What had changed was our ability to take responsibility for that work. We had a clearer understanding of the systems, a team that could own them and a direction for where we wanted to invest. Four principles shaped that first year:</p>
                   <ol>
                     <li>Buy what enables you, build what differentiates you.</li>
                     <li>Make sure core capabilities are in-house.</li>
@@ -154,138 +183,185 @@
             <summary><span class="story-year-date">2024</span><h3>Year Two: Simplifying the Business and Preparing for Growth</h3></summary>
             <div class="story-year-body">
               <div class="story-intro">
-                <p>By the second year, BridgeFund had grown to around 50 people.</p>
-                <p>We had made the major platform decisions, but were still operating the old systems while planning how to replace them. Mambu and HubSpot would affect almost every part of the organisation.</p>
-                <p>At the same time, the business had accumulated a lot of operational complexity. Spreadsheets moved between departments. Information was copied across systems. Product variations and exceptions created additional work. Different data sources sometimes gave conflicting answers.</p>
-                <p>We had an opportunity to do more than migrate software. We could reconsider how the business operated.</p>
+                <p>By the second year, BridgeFund had grown to around 50 people. We had made the major platform decisions, but were still operating the old systems while planning how to replace them. Mambu and HubSpot would affect almost every part of the organisation.</p>
+                <p>At the same time, the business had accumulated a lot of operational complexity. Spreadsheets moved between departments. Information was copied across systems. Product variations and exceptions created additional work. Different data sources sometimes gave conflicting answers. We had an opportunity to do more than migrate software. We could reconsider how the business operated.</p>
               </div>
               <details class="story-chapter" id="bridgefund-year-2-chapter-1">
                 <summary><h4>1. Make It a Business Transformation</h4></summary>
                 <div class="story-chapter-body">
-                <p>From my first day, there was a lot of frustration with IT. Whenever something went wrong or took too long, technology was usually seen as the cause.</p>
-                <p>With the outages we had experienced, some of that frustration was justified. But as we looked more closely, we also found problems in the way the business operated.</p>
-                <p>Information moved between spreadsheets. Departments repeated work. Manual mistakes carried through into other systems.</p>
-                <p>The rest of the management team experienced those problems every day. Getting support for change was therefore easier than you might expect. People wanted simpler processes and faster ways of working.</p>
-                <p>That gave us a shared starting point.</p>
-                <p>I worked closely with the COO to review our operations. We needed to understand how information moved, who was responsible for each step and where unnecessary complexity had accumulated.</p>
-                <p>Just because a CRM or banking platform is a technical application doesn’t mean its implementation belongs to technology alone. The whole business would be affected, so the business had to participate in deciding how it should work.</p>
-                  <aside class="story-takeaway"><h5>What I learned</h5><p>Look beyond the department receiving the complaints. What gets described as an IT problem may also involve process design, data quality, responsibilities and manual handovers.</p><h5>A question worth asking</h5><p>Are the people responsible for running the operation actively involved in deciding how the new system will work?</p></aside>
+                  <p>From my first day, there was a lot of frustration with IT. Whenever something went wrong or took too long, technology was usually seen as the cause. With the outages we had experienced, some of that frustration was justified. But as we looked more closely, we also found problems in the way the business operated. Information moved between spreadsheets. Departments repeated work. Manual mistakes carried through into other systems.</p>
+                  <p>The rest of the management team experienced those problems every day. Getting support for change was therefore easier than you might expect. People wanted simpler processes and faster ways of working. That gave us a shared starting point. I worked closely with the COO to review our operations. We needed to understand how information moved, who was responsible for each step and where unnecessary complexity had accumulated.</p>
+                  <p>Just because a CRM or banking platform is a technical application doesn’t mean its implementation belongs to technology alone. The whole business would be affected, so the business had to participate in deciding how it should work.</p>
+                  <aside class="story-takeaway">
+                    <h5>What I learned</h5>
+                    <p>Look beyond the department receiving the complaints. What gets described as an IT problem may also involve process design, data quality, responsibilities and manual handovers. The willingness to change was already there. Working with the COO helped connect that willingness to decisions about processes, responsibilities and how the new platforms should be used.</p>
+                    <h5>A question worth asking</h5>
+                    <p>Are the people responsible for running the operation actively involved in deciding how the new system will work? Bring the departments involved in one customer journey together. Can they agree on where the problem occurs and who should own the decision to change it?</p>
+                    <div class="story-resource">
+                      <h5>Something to listen to</h5>
+                      <p><span class="story-resource-type">Podcast</span><a href="https://www.lennysnewsletter.com/p/product-management-theater-marty">Product management theater</a> with Marty Cagan on Lenny’s Podcast.</p>
+                      <p>For a broader discussion of organisational change, listen to the section on the product operating model, beginning around 1:02:05. It connects product work with the responsibilities of the wider organisation.</p>
+                    </div>
+                  </aside>
                 </div>
               </details>
               <details class="story-chapter" id="bridgefund-year-2-chapter-2">
                 <summary><h4>2. Simplify Before You Implement</h4></summary>
                 <div class="story-chapter-body">
-                <p>Our processes had become more complicated as the business grew.</p>
-                <p>We were introducing propositions, extending loans and credit lines, working with different discounts and handling exceptions. Each variation added something for people and systems to manage.</p>
-                <p>I didn’t want us to reproduce all of that complexity inside the new platforms.</p>
-                <p>We brought in external expertise to help implement HubSpot and review our processes. My starting point was that many of our operational requirements were common business requirements. We didn’t need a unique implementation for everything.</p>
-                <p>Where established practices in HubSpot could support us, I preferred to adapt our way of working and use the platform as standard.</p>
-                <p>Customising software around an inefficient process would preserve the inefficiency and give us more software to maintain.</p>
-                <p>We applied the same thinking to Mambu. We reviewed the variations in our loans and credit lines and made decisions to narrow and standardise our propositions.</p>
-                <p>Keeping things simple became an important principle. Before implementing the workflows, we mapped the processes and agreed how we wanted them to operate.</p>
-                  <aside class="story-takeaway"><h5>What I learned</h5><p>Buying a standard platform only removes complexity if you are willing to reconsider some of your existing ways of working.</p><h5>A question worth asking</h5><p>Does this process need to work differently from everyone else’s, or have you simply become accustomed to doing it this way?</p></aside>
+                  <p>Our processes had become more complicated as the business grew. We were introducing propositions, extending loans and credit lines, working with different discounts and handling exceptions. Each variation added something for people and systems to manage. I didn’t want us to reproduce all of that complexity inside the new platforms.</p>
+                  <p>We brought in external expertise to help implement HubSpot and review our processes. My starting point was that many of our operational requirements were common business requirements. We didn’t need a unique implementation for everything. Where established practices in HubSpot could support us, I preferred to adapt our way of working and use the platform as standard. Customising software around an inefficient process would preserve the inefficiency and give us more software to maintain.</p>
+                  <p>We applied the same thinking to Mambu. We reviewed the variations in our loans and credit lines and made decisions to narrow and standardise our propositions. Keeping things simple became an important principle. Before implementing the workflows, we mapped the processes and agreed how we wanted them to operate.</p>
+                  <aside class="story-takeaway">
+                    <h5>What I learned</h5>
+                    <p>Buying a standard platform only removes complexity if you are willing to reconsider some of your existing ways of working. We had to be willing to change familiar processes as well as replace applications. Otherwise, each exception would become another custom requirement for the new platform to support.</p>
+                    <h5>A question worth asking</h5>
+                    <p>Does this process need to work differently from everyone else’s, or have you simply become accustomed to doing it this way? Pick one requested customisation and identify the need behind it. Could a standard process meet that need, and what would the organisation have to change to use it?</p>
+                    <div class="story-resource">
+                      <h5>Further reading</h5>
+                      <p><span class="story-resource-type">Book</span><a href="https://www.lean.org/store/book/learning-to-see/">Learning to See</a> by Mike Rother and John Shook.</p>
+                      <p>Introduces mapping the current process and designing an improved future process. Its examples come from manufacturing, but the distinction is useful when reviewing service operations before implementation.</p>
+                    </div>
+                  </aside>
                 </div>
               </details>
               <details class="story-chapter" id="bridgefund-year-2-chapter-3">
                 <summary><h4>3. Follow the Application Through the Entire Business</h4></summary>
                 <div class="story-chapter-body">
-                <p>Customer onboarding showed how much complexity had built up.</p>
-                <p>An application first went to sales for a manual check. Depending on the outcome, customer service would call the applicant to understand why they needed funding and what they intended to use it for.</p>
-                <p>Those notes went into a separate spreadsheet and back to sales before reaching the risk team.</p>
-                <p>Risk then reviewed the story alongside the PSD2 transaction data. Sometimes that meant another call to the customer, more information and another review.</p>
-                <p>Along the way, people updated several spreadsheets. Some were used for reporting, while others prepared information for the next step.</p>
-                <p>Even after the credit decision, there was considerable manual work. KYC information had to be collected. A contract was drafted by hand and sent for signatures from both sides. Administration then registered the loan in the loan management system, followed by communication to the customer.</p>
-                <p>Each individual activity had a purpose. But following the application through the whole business revealed how often information was transferred, copied and handled again.</p>
-                <p>We needed to understand that complete journey before deciding where to intervene.</p>
-                  <aside class="story-takeaway"><h5>What I learned</h5><p>A department can carry out its own task correctly while the overall process remains slow and prone to mistakes. You need to look at how the steps connect.</p><h5>A question worth asking</h5><p>How many times does the same customer information get copied, checked or passed to someone else before the process is complete?</p></aside>
+                  <p>Customer onboarding showed how much complexity had built up. An application first went to sales for a manual check. Depending on the outcome, customer service would call the applicant to understand why they needed funding and what they intended to use it for. Those notes went into a separate spreadsheet and back to sales before reaching the risk team.</p>
+                  <p>Risk then reviewed the story alongside the PSD2 transaction data. Sometimes that meant another call to the customer, more information and another review. Along the way, people updated several spreadsheets. Some were used for reporting, while others prepared information for the next step.</p>
+                  <p>Even after the credit decision, there was considerable manual work. KYC information had to be collected. A contract was drafted by hand and sent for signatures from both sides. Administration then registered the loan in the loan management system, followed by communication to the customer.</p>
+                  <p>Each individual activity had a purpose. But following the application through the whole business revealed how often information was transferred, copied and handled again. We needed to understand that complete journey before deciding where to intervene.</p>
+                  <aside class="story-takeaway">
+                    <h5>What I learned</h5>
+                    <p>A department can carry out its own task correctly while the overall process remains slow and prone to mistakes. You need to look at how the steps connect. Following one application made those connections visible. Looking only at the work inside each department would have missed the repeated entries and loss of context between them.</p>
+                    <h5>A question worth asking</h5>
+                    <p>How many times does the same customer information get copied, checked or passed to someone else before the process is complete? Trace a single application from arrival to completion with the people who handle it. Note where information is copied, clarified or requested from the customer again.</p>
+                    <div class="story-resource">
+                      <h5>Further reading</h5>
+                      <p><span class="story-resource-type">Book</span><a href="https://www.lean.org/store/book/learning-to-see/">Learning to See</a> by Mike Rother and John Shook.</p>
+                      <p>Provides a structured way to follow work and information across a process. Read it with your own customer journey in mind, adapting its manufacturing examples to the handovers in your business.</p>
+                    </div>
+                  </aside>
                 </div>
               </details>
               <details class="story-chapter" id="bridgefund-year-2-chapter-4">
                 <summary><h4>4. Put a Chess Clock on the Process</h4></summary>
                 <div class="story-chapter-body">
-                <p>We couldn’t automate everything at once. We needed to understand where to start and how HubSpot could help.</p>
-                <p>We used what I would describe as a chess clock to measure the waiting time between steps. We counted the handovers between people and departments and looked at where errors kept happening.</p>
-                <p>We were measuring how long an application sat waiting for the next action. That helped us see where the process was getting stuck.</p>
-                <p>Those findings gave us a practical way to set priorities. We looked for changes that could make the biggest difference for customers and for the business.</p>
-                <p>Which handovers introduced long waits? Where did information get copied or lost? Which activities repeatedly needed correcting?</p>
-                <p>We then identified where we could simplify the work and introduce automation.</p>
-                <p>This gave us a manageable sequence of improvements. We didn’t need to automate every step before making progress.</p>
-                  <aside class="story-takeaway"><h5>What I learned</h5><p>The gaps between activities deserve as much attention as the activities themselves. A process can take a long time even when each individual task is relatively quick.</p><h5>A question worth asking</h5><p>How much of your customer’s journey is spent waiting for the next person or department to act?</p></aside>
+                  <p>We couldn’t automate everything at once. We needed to understand where to start and how HubSpot could help. We used what I would describe as a chess clock to measure the waiting time between steps. We counted the handovers between people and departments and looked at where errors kept happening. We were measuring how long an application sat waiting for the next action. That helped us see where the process was getting stuck.</p>
+                  <p>Those findings gave us a practical way to set priorities. We looked for changes that could make the biggest difference for customers and for the business. Which handovers introduced long waits? Where did information get copied or lost? Which activities repeatedly needed correcting?</p>
+                  <p>We then identified where we could simplify the work and introduce automation. This gave us a manageable sequence of improvements. We didn’t need to automate every step before making progress.</p>
+                  <aside class="story-takeaway">
+                    <h5>What I learned</h5>
+                    <p>The gaps between activities deserve as much attention as the activities themselves. A process can take a long time even when each individual task is relatively quick. We measured the waiting between steps because that was part of the experience customers actually had. It gave us a concrete starting point for choosing where simplification and automation might help.</p>
+                    <h5>A question worth asking</h5>
+                    <p>How much of your customer’s journey is spent waiting for the next person or department to act? Compare the waits between steps for several applications. Which delay appears repeatedly, and what would need to change to reduce it?</p>
+                    <div class="story-resource">
+                      <h5>Further reading</h5>
+                      <p><span class="story-resource-type">Book</span><a href="https://www.lean.org/store/book/learning-to-see/">Learning to See</a> by Mike Rother and John Shook.</p>
+                      <p>Helps make delays and the flow of information visible when mapping a process. A useful companion to the chess clock exercise, especially when discussing the whole journey across departments.</p>
+                    </div>
+                  </aside>
                 </div>
               </details>
               <details class="story-chapter" id="bridgefund-year-2-chapter-5">
                 <summary><h4>5. Clean the Data Before Moving It</h4></summary>
                 <div class="story-chapter-body">
-                <p>Preparing for the migrations exposed how inconsistent our data had become.</p>
-                <p>We had duplicate information, different formats and data spread across domains and systems. Moving it required work on both the records themselves and the models used to organise them.</p>
-                <p>We invested time in sanitising, deduplicating and standardising that information.</p>
-                <p>This also mattered beyond the migrations. We were still making too many strategic decisions on instinct because the data wasn’t dependable enough. Different data points could contradict one another, making it difficult to know which answer to trust.</p>
-                <p>Moving inconsistent data into a new platform wouldn’t resolve those contradictions. We had to address them as part of the preparation.</p>
-                <p>The internal data capabilities we had established in year one were essential to doing that work.</p>
-                  <aside class="story-takeaway"><h5>What I learned</h5><p>A migration exposes the quality of the information your business runs on. Use that opportunity to improve it, rather than carrying the same problems into a new system.</p><h5>A question worth asking</h5><p>If two departments give you different answers to the same business question, can you explain why?</p></aside>
+                  <p>Preparing for the migrations exposed how inconsistent our data had become. We had duplicate information, different formats and data spread across domains and systems. Moving it required work on both the records themselves and the models used to organise them. We invested time in sanitising, deduplicating and standardising that information.</p>
+                  <p>This also mattered beyond the migrations. We were still making too many strategic decisions on instinct because the data wasn’t dependable enough. Different data points could contradict one another, making it difficult to know which answer to trust. Moving inconsistent data into a new platform wouldn’t resolve those contradictions. We had to address them as part of the preparation. The internal data capabilities we had established in year one were essential to doing that work.</p>
+                  <aside class="story-takeaway">
+                    <h5>What I learned</h5>
+                    <p>A migration exposes the quality of the information your business runs on. Use that opportunity to improve it, rather than carrying the same problems into a new system. Cleaning records was only one part of the job. Different formats and definitions also needed attention, otherwise the same inconsistencies could continue after the migration.</p>
+                    <h5>A question worth asking</h5>
+                    <p>If two departments give you different answers to the same business question, can you explain why? Trace one disputed figure back to its sources. Check whether the departments are using the same definition, time period and underlying records before deciding which answer is correct.</p>
+                    <div class="story-resource">
+                      <h5>Further reading</h5>
+                      <p><span class="story-resource-type">Book</span><a href="https://www.oreilly.com/library/view/fundamentals-of-data/9781098108298/">Fundamentals of Data Engineering</a> by Joe Reis and Matt Housley.</p>
+                      <p>Connects data transformation and architecture with the needs of people using the data. Useful background for treating migration quality as more than successfully moving records.</p>
+                    </div>
+                  </aside>
                 </div>
               </details>
               <details class="story-chapter" id="bridgefund-year-2-chapter-6">
                 <summary><h4>6. Prepare in Parallel, Launch in Stages</h4></summary>
                 <div class="story-chapter-body">
-                <p>Both Mambu and HubSpot represented substantial changes. We had one team working on each implementation, and preparation ran in parallel.</p>
-                <p>We deliberately kept the actual migrations separate. Each platform affected enough of the organisation on its own. Launching both together would have introduced too much change at once.</p>
-                <p>Mambu came first.</p>
-                <p>Within that implementation, we started with funding, the smaller part of the business. It represented roughly 10 to 20 percent of our processes and business. Once that was live and working, we moved into the lending phase.</p>
-                <p>The implementation and migration work stretched across the year. Mambu first went live around the summer, with HubSpot following around October or November.</p>
-                <p>Those launches were milestones in a longer programme. They weren’t the point at which every process became fully automated.</p>
-                <p>Some steps remained manual after launch. We continued improving them, gradually introducing more automation as we worked through the priorities.</p>
-                <p>As the platforms took over functions previously handled by our own systems, we were also able to remove around 80 percent of the old codebase, much of which represented legacy complexity and technical debt.</p>
-                  <aside class="story-takeaway"><h5>What I learned</h5><p>Plan for how much change the organisation can absorb. Separate teams can prepare substantial changes at the same time, while the business may need those changes introduced at different moments.</p><h5>A question worth asking</h5><p>Have you separated the work required to go live from the improvements you can safely make afterwards?</p></aside>
+                  <p>Both Mambu and HubSpot represented substantial changes. We had one team working on each implementation, and preparation ran in parallel. We deliberately kept the actual migrations separate. Each platform affected enough of the organisation on its own. Launching both together would have introduced too much change at once.</p>
+                  <p>Mambu came first. Within that implementation, we started with funding, the smaller part of the business. It represented roughly 10 to 20 percent of our processes and business. Once that was live and working, we moved into the lending phase.</p>
+                  <p>The implementation and migration work stretched across the year. Mambu first went live around the summer, with HubSpot following around October or November. Those launches were milestones in a longer programme. They weren’t the point at which every process became fully automated. Some steps remained manual after launch. We continued improving them, gradually introducing more automation as we worked through the priorities. As the platforms took over functions previously handled by our own systems, we were also able to remove around 80 percent of the old codebase, much of which represented legacy complexity and technical debt.</p>
+                  <aside class="story-takeaway">
+                    <h5>What I learned</h5>
+                    <p>Plan for how much change the organisation can absorb. Separate teams can prepare substantial changes at the same time, while the business may need those changes introduced at different moments. Separating the launches gave us a way to limit how much changed at once. Accepting some manual work after launch also kept complete automation from becoming a condition for every migration.</p>
+                    <h5>A question worth asking</h5>
+                    <p>Have you separated the work required to go live from the improvements you can safely make afterwards? List what must work on launch day, which temporary manual steps are acceptable and who will handle them. That makes the remaining work visible rather than leaving it as an assumption.</p>
+                    <div class="story-resource">
+                      <h5>Further reading</h5>
+                      <p><span class="story-resource-type">Free book chapter</span><a href="https://sre.google/sre-book/reliable-product-launches/">Reliable Product Launches at Scale</a> from Google’s <cite>Site Reliability Engineering</cite>.</p>
+                      <p>Covers launch coordination and readiness checks for complex services. Use it as a prompt for your own preparation, scaled to your organisation rather than copied as a complete checklist.</p>
+                    </div>
+                  </aside>
                 </div>
               </details>
               <details class="story-chapter" id="bridgefund-year-2-chapter-7">
                 <summary><h4>7. Choose Technology You Can Build a Team Around</h4></summary>
                 <div class="story-chapter-body">
-                <p>Alongside the platform migrations, we continued improving the services we would own ourselves.</p>
-                <p>Our engineering team had grown to around 15 to 20 people across DevOps, platform, frontend and backend. We also started planning and carrying out the move from the legacy PHP onboarding application to Node.js.</p>
-                <p>I don’t have anything against PHP, or any other language. Every language has strengths and weaknesses.</p>
-                <p>One of my first questions when choosing a stack is whether I can hire experienced engineers who know it well.</p>
-                <p>For us, Node.js was a practical choice. We already used it for our other services, the team knew it well, and we found it accessible from a recruitment perspective. The documentation and support around it also mattered.</p>
-                <p>I wanted more of the engineering team to be able to work confidently on onboarding and take responsibility for it.</p>
-                <p>Being able to recruit the right senior engineers would help us deliver faster, give us better control over our systems and improve our chances of succeeding as we grew.</p>
-                  <aside class="story-takeaway"><h5>What I learned</h5><p>Your technology choices influence your ability to hire, share knowledge and maintain the product. Those considerations belong in the decision alongside the technical requirements.</p><h5>A question worth asking</h5><p>Can you build and retain the team you will need to operate this technology over time?</p></aside>
+                  <p>Alongside the platform migrations, we continued improving the services we would own ourselves. Our engineering team had grown to around 15 to 20 people across DevOps, platform, frontend and backend. We also started planning and carrying out the move from the legacy PHP onboarding application to Node.js.</p>
+                  <p>I don’t have anything against PHP, or any other language. Every language has strengths and weaknesses. One of my first questions when choosing a stack is whether I can hire experienced engineers who know it well. For us, Node.js was a practical choice. We already used it for our other services, the team knew it well, and we found it accessible from a recruitment perspective. The documentation and support around it also mattered.</p>
+                  <p>I wanted more of the engineering team to be able to work confidently on onboarding and take responsibility for it. Being able to recruit the right senior engineers would help us deliver faster, give us better control over our systems and improve our chances of succeeding as we grew.</p>
+                  <aside class="story-takeaway">
+                    <h5>What I learned</h5>
+                    <p>Your technology choices influence your ability to hire, share knowledge and maintain the product. Those considerations belong in the decision alongside the technical requirements. Standardisation mattered because the team already understood the stack. The choice was about our ability to recruit, share responsibility and keep improving the application over time.</p>
+                    <h5>A question worth asking</h5>
+                    <p>Can you build and retain the team you will need to operate this technology over time? Look at your current team and the people you can realistically hire. How much additional learning and specialist support would this choice require?</p>
+                    <div class="story-resource">
+                      <h5>Further reading</h5>
+                      <p><span class="story-resource-type">Article</span><a href="https://mcfunley.com/choose-boring-technology">Choose Boring Technology</a> by Dan McKinley.</p>
+                      <p>Examines the operational cost of adding unfamiliar technologies. Useful when weighing a new tool’s benefits against the knowledge and support your team will need to maintain it.</p>
+                    </div>
+                  </aside>
                 </div>
               </details>
               <details class="story-chapter" id="bridgefund-year-2-chapter-8">
                 <summary><h4>8. Replace the Application One Step at a Time</h4></summary>
                 <div class="story-chapter-body">
-                <p>We didn’t replace the entire onboarding application in one go.</p>
-                <p>We broke the journey down into individual steps. For each part we tackled, we replaced the relevant routing and services with an implementation in Node.js and our own frontend stack.</p>
-                <p>The rest of the application continued to run while we worked through the next part.</p>
-                <p>This approach is known as the strangler pattern. It allowed us to gradually replace the legacy application while continuing to serve customers.</p>
-                <p>We also didn’t simply start with the first screen and work towards the last. We looked at where a change could make the biggest difference for the customer and for us as a business.</p>
-                <p>That guided both which parts we migrated first and which manual steps we prioritised for automation.</p>
-                <p>The rewrite gave us an opportunity to improve the journey as we went. I wanted each piece of work to contribute something useful beyond moving it to a different technology stack.</p>
-                  <aside class="story-takeaway"><h5>What I learned</h5><p>A rewrite can be divided into useful changes that you can deliver progressively. Let the expected outcome influence the order of the work.</p><h5>A question worth asking</h5><p>Which part could you replace first that would create a meaningful benefit before the rest of the rewrite is finished?</p></aside>
+                  <p>We didn’t replace the entire onboarding application in one go. We broke the journey down into individual steps. For each part we tackled, we replaced the relevant routing and services with an implementation in Node.js and our own frontend stack. The rest of the application continued to run while we worked through the next part.</p>
+                  <p>This approach is known as the strangler pattern. It allowed us to gradually replace the legacy application while continuing to serve customers.</p>
+                  <p>We also didn’t simply start with the first screen and work towards the last. We looked at where a change could make the biggest difference for the customer and for us as a business. That guided both which parts we migrated first and which manual steps we prioritised for automation. The rewrite gave us an opportunity to improve the journey as we went. I wanted each piece of work to contribute something useful beyond moving it to a different technology stack.</p>
+                  <aside class="story-takeaway">
+                    <h5>What I learned</h5>
+                    <p>A rewrite can be divided into useful changes that you can deliver progressively. Let the expected outcome influence the order of the work. Working in smaller parts connected the technical migration to improvements we could deliver along the way. Prioritising by expected impact also gave us a reason for choosing one part before another.</p>
+                    <h5>A question worth asking</h5>
+                    <p>Which part could you replace first that would create a meaningful benefit before the rest of the rewrite is finished? Identify the boundary of that first part and what it depends on. How will the replacement work with the application that remains, and how will you know it has improved the journey?</p>
+                    <div class="story-resource">
+                      <h5>Further reading</h5>
+                      <p><span class="story-resource-type">Article</span><a href="https://martinfowler.com/bliki/StranglerFigApplication.html">Strangler Fig</a> by Martin Fowler.</p>
+                      <p>Explains the gradual replacement approach behind the onboarding migration. Particularly relevant when thinking about how old and new parts can coexist during a longer transition.</p>
+                    </div>
+                  </aside>
                 </div>
               </details>
               <details class="story-chapter" id="bridgefund-year-2-chapter-9">
                 <summary><h4>9. Build for the Business You Are Becoming</h4></summary>
                 <div class="story-chapter-body">
-                <p>We knew BridgeFund’s ambitions would place greater demands on our technology.</p>
-                <p>There were two directions to prepare for: serving more businesses in the Netherlands and potentially expanding into other European countries.</p>
-                <p>International expansion meant thinking ahead about language support and dictionaries. Growth also required attention to queuing, scalable services and failover.</p>
-                <p>Serving more customers in the Netherlands meant supporting higher loads and maintaining availability during peak hours. It also meant being able to recover quickly when something failed.</p>
-                <p>At the same time, we continued improving engineering practices across the platform.</p>
-                <p>We introduced more standardisation, linting, unit tests, end to end tests and smoke tests. We were improving our microservices architecture while building the checks needed to change it with greater confidence.</p>
-                <p>This work ran alongside the Mambu and HubSpot programmes. The services we continued to build ourselves needed the same attention as the platforms we were buying.</p>
-                  <aside class="story-takeaway"><h5>What I learned</h5><p>“Make it scalable” is too broad to guide a team. Be specific about the growth you expect and what that will require from the systems and the people operating them.</p><h5>A question worth asking</h5><p>Are you preparing for more customers, more markets, more product variations, or a combination of those? What does each one actually require?</p></aside>
+                  <p>We knew BridgeFund’s ambitions would place greater demands on our technology. There were two directions to prepare for: serving more businesses in the Netherlands and potentially expanding into other European countries.</p>
+                  <p>International expansion meant thinking ahead about language support and dictionaries. Growth also required attention to queuing, scalable services and failover. Serving more customers in the Netherlands meant supporting higher loads and maintaining availability during peak hours. It also meant being able to recover quickly when something failed.</p>
+                  <p>At the same time, we continued improving engineering practices across the platform. We introduced more standardisation, linting, unit tests, end to end tests and smoke tests. We were improving our microservices architecture while building the checks needed to change it with greater confidence. This work ran alongside the Mambu and HubSpot programmes. The services we continued to build ourselves needed the same attention as the platforms we were buying.</p>
+                  <aside class="story-takeaway">
+                    <h5>What I learned</h5>
+                    <p>“Make it scalable” is too broad to guide a team. Be specific about the growth you expect and what that will require from the systems and the people operating them. For us, serving more customers and entering new countries created different requirements. Naming those requirements made it easier to connect architecture and testing work to the business direction.</p>
+                    <h5>A question worth asking</h5>
+                    <p>Are you preparing for more customers, more markets, more product variations, or a combination of those? What does each one actually require? Turn one growth ambition into a concrete scenario. What load, response time, availability and recovery expectations would your team need to plan and test for?</p>
+                    <div class="story-resource">
+                      <h5>Further reading</h5>
+                      <p><span class="story-resource-type">Free book chapter</span><a href="https://sre.google/sre-book/service-level-objectives/">Service Level Objectives</a> from Google’s <cite>Site Reliability Engineering</cite>.</p>
+                      <p>Explains how to turn reliability expectations into measurable objectives. Useful background for discussing what availability and performance should mean from a customer’s perspective.</p>
+                    </div>
+                  </aside>
                 </div>
               </details>
               <details class="story-chapter story-recap">
                 <summary><h4>Where We Stood at the End of Year Two</h4></summary>
                 <div class="story-chapter-body">
-                <p>The second year involved changes across the whole business.</p>
-                <p>We had worked with management to simplify processes and propositions, prepared and carried out substantial platform migrations, and invested in the quality of our data.</p>
-                <p>We had also continued growing the engineering team and started replacing the legacy onboarding application in stages.</p>
-                <p>There was still manual work. There were still improvements to make. But we had created a clearer foundation for those improvements and a way to prioritise them.</p>
-                <p>The principles that stood out for me were:</p>
+                  <p>The second year involved changes across the whole business. We had worked with management to simplify processes and propositions, prepared and carried out substantial platform migrations, and invested in the quality of our data. We had also continued growing the engineering team and started replacing the legacy onboarding application in stages.</p>
+                  <p>There was still manual work. There were still improvements to make. But we had created a clearer foundation for those improvements and a way to prioritise them. The principles that stood out for me were:</p>
                   <ol>
                     <li>Treat major system implementations as business transformations.</li>
                     <li>Simplify processes before customising software around them.</li>

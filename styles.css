@@ -382,6 +382,34 @@ h2 em {
 .story-takeaway p + h5 {
   margin-top: 24px;
 }
+.story-resource {
+  border-top: 1px solid var(--line);
+  margin-top: 24px;
+  padding-top: 20px;
+}
+.story-resource-type {
+  display: block;
+  font-size: 14px;
+  color: var(--teal);
+  margin-bottom: 4px;
+}
+.story-resource a {
+  color: var(--teal);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+.story-resource a:hover {
+  color: var(--deep);
+}
+.story-resource a:focus-visible {
+  outline: 2px solid var(--violet);
+  outline-offset: 3px;
+}
+.bridgefund-story .story-resource p + p {
+  margin-top: 12px;
+}
 .story-chapter-body ol {
   font-size: 17px;
   line-height: 1.6;
