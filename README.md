@@ -2,6 +2,8 @@
 
 The public portfolio site for Jeroen Groeneweg.
 
+The contact section invites professional and personal conversations, with email, LinkedIn and a downloadable résumé. Its dark teal background echoes the hero; decorative particles animate only when reduced motion is not requested. Run `node tests/contact.cjs` to verify contact links, the PDF asset, responsive fit and reduced-motion behaviour.
+
 It is a static site designed for GitHub Pages. Changes merged into `main` deploy through the included GitHub Actions workflow.
 
 “My Work” contains the BridgeFund story organised by year, introduced by a short explanation of its practical lessons and purpose. Years one through four contain six, nine, seven and six chapters respectively, each with a recap. Year four is explicitly in progress and closes with a reflection across the whole story. Native HTML details and summary elements support mouse, touch and keyboard. Shared name attributes allow only one year and one chapter (including recaps) to be open at a time; opening a chapter keeps its parent year open. A toggle listener resets nested chapters when their year closes. All years and chapters are collapsed on initial load.
