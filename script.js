@@ -10,6 +10,26 @@ document.querySelectorAll('.story-year').forEach((year) => {
   });
 });
 
+// Wait for the sibling chapter to close and the layout to settle before
+// placing the newly opened heading below the fixed navigation.
+document.querySelectorAll('.story-chapter').forEach((chapter) => {
+  chapter.addEventListener('toggle', () => {
+    if (!chapter.open) return;
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        if (!chapter.open || !chapter.closest('.story-year').open) return;
+        const summary = chapter.querySelector(':scope > summary');
+        const nav = document.querySelector('.nav');
+        const offset = (nav ? nav.getBoundingClientRect().height : 0) + 16;
+        window.scrollTo({
+          top: window.scrollY + summary.getBoundingClientRect().top - offset,
+          behavior: 'instant',
+        });
+      });
+    });
+  });
+});
+
 const particles = document.querySelector('.particles');
 const particleCount = 64;
 

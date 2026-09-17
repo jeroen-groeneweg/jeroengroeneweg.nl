@@ -23,13 +23,27 @@ async function main() {
           { id: await item.getAttribute('id'), expected: open },
         );
       };
+      const expectAligned = async (item) => {
+        await page.waitForFunction((id) => {
+          const summary = document.getElementById(id).querySelector(':scope > summary');
+          const navHeight = document.querySelector('.nav').getBoundingClientRect().height;
+          return Math.abs(summary.getBoundingClientRect().top - navHeight - 16) < 2;
+        }, await item.getAttribute('id'));
+      };
       assert.equal(await openCount(), 0);
       await activate(year(1), 'Enter');
       await activate(chapter(1), 'Space');
       await expectOpen(chapter(1), true);
+      await expectAligned(chapter(1));
       await activate(chapter(2), 'Enter');
       await expectOpen(chapter(1), false);
       await expectOpen(chapter(2), true);
+      await expectAligned(chapter(2));
+      // Switching back upwards must also align after the previous content closes.
+      await chapter(1).locator(':scope > summary').click();
+      await expectAligned(chapter(1));
+      await chapter(2).locator(':scope > summary').click();
+      await expectAligned(chapter(2));
       await expectOpen(year(1), true);
       assert.equal(await openCount(), 2);
       // Recaps participate in the same chapter group.
@@ -49,7 +63,12 @@ async function main() {
       await activate(year(1), 'Enter');
       await expectOpen(chapter(1), false);
       assert.equal(await openCount(), 0);
-      console.log('PASS ' + width + ': exclusive years, chapters, recaps, reset and keyboard');
+      assert.equal(
+        await year(1).locator('.story-year-body').evaluate((element) =>
+          getComputedStyle(element).backgroundColor),
+        'rgb(255, 255, 255)',
+      );
+      console.log('PASS ' + width + ': exclusive accordions, keyboard, heading alignment and white background');
       await page.close();
     }
   } finally {
