@@ -917,6 +917,97 @@ h2 em {
   width: 20px;
   z-index: 2;
 }
+/* Résumé cards: original Geist typography, brand borders and colour bands. */
+@font-face {
+  font-family: "Geist Resume";
+  src: url("public/geist-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+.resume-card {
+  --card-ink: #202a50;
+  --card-border: #76aaa5;
+  --card-marker: var(--card-ink);
+  background: #fff;
+  color: var(--card-ink);
+  border: 1.6px solid var(--card-border);
+  font-family: "Geist Resume", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.32;
+  position: relative;
+  overflow: hidden;
+  margin-top: 22px;
+  padding: 24px 11.36% 22px 2.84%;
+}
+.resume-card::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 7.39%;
+  background: linear-gradient(to bottom, #6e44f2 0 32%, #202a50 32% 63%, #0aa993 63% 100%);
+}
+.resume-card-dpg-media {
+  --card-ink: #171717;
+  --card-border: #d685ad;
+  --card-marker: #cf2f7f;
+}
+.resume-card-dpg-media::after {
+  background: linear-gradient(to bottom, #ffc329 0 22%, #ee4b3e 22% 46%, #cf2f7f 46% 72%, #7b4298 72% 100%);
+}
+.resume-card-tweakers {
+  --card-ink: #161616;
+  --card-border: #b7c72d;
+  --card-marker: #8e9800;
+}
+.resume-card-tweakers::after {
+  background: linear-gradient(155deg, #ddea3d 0 63%, #161616 63% 100%);
+}
+.resume-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.resume-card-header img {
+  width: 72px;
+  height: 72px;
+  flex: 0 0 72px;
+  object-fit: contain;
+}
+.resume-card-kicker {
+  font-size: 13.4px;
+  font-weight: 650;
+  margin: 0;
+}
+.resume-card h3 {
+  font-size: 27px;
+  font-weight: 730;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  margin: 4px 0 6px;
+}
+.resume-card-meta {
+  font-size: 13.8px;
+  margin: 0;
+}
+.resume-card ul {
+  columns: 2;
+  column-gap: 34px;
+  padding-left: 18px;
+  margin: 16px 0 0;
+}
+.resume-card li {
+  break-inside: avoid;
+  margin: 0 0 7px;
+  padding-left: 4px;
+}
+.resume-card li::marker { color: var(--card-marker); }
+@media (max-width: 760px) {
+  .resume-card { padding: 22px 34px 18px 18px; }
+  .resume-card::after { width: 14px; }
+  .resume-card ul { columns: 1; }
+  .resume-card-header img { width: 52px; height: 52px; flex-basis: 52px; }
+  .resume-card-header { gap: 12px; }
+}
 .contact {
   background: var(--cream);
   color: var(--ink);

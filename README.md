@@ -2,6 +2,8 @@
 
 The public portfolio site for Jeroen Groeneweg.
 
+Earlier Work reproduces the three executive résumé cards with their original text, Geist font, logos, brand borders and right-hand colour bands. Desktop uses two bullet columns; screens at 760px and below use one column and a narrower decorative band for readability. Run `node tests/resume-cards.cjs` to check headings, bullet counts, image loading and responsive columns. The source résumé's BridgeFund profit wording is preserved verbatim and differs from the later story figures; changes to those claims require an editorial decision.
+
 The contact section invites professional and personal conversations, with a prominent email-address link, LinkedIn and a downloadable résumé. It uses the site's light cream background and dark text; decorative particles animate only when reduced motion is not requested. Run `node tests/contact.cjs` to verify contact links, the PDF asset, responsive fit and reduced-motion behaviour.
 
 It is a static site designed for GitHub Pages. Changes merged into `main` deploy through the included GitHub Actions workflow.
