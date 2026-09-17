@@ -15,6 +15,15 @@ const path = require('node:path');
       assert.equal(await cards.locator('li').count(), 14);
       assert.equal(await page.locator('.case-studies .eyebrow').textContent(), 'Earlier Work');
       assert.ok(!(await cards.allTextContents()).join('').includes('METRIC NEEDED'));
+      assert.ok(await page.evaluate(() => {
+        const matching = (first, second) => {
+          const a = getComputedStyle(document.querySelector(first));
+          const b = getComputedStyle(document.querySelector(second));
+          return ['fontFamily', 'fontSize', 'fontWeight', 'lineHeight'].every(property => a[property] === b[property]);
+        };
+        return matching('.resume-card li', '.story-chapter-body > p')
+          && matching('.resume-card h3', '.story-chapter h4');
+      }), 'Card body and heading typography should match story chapters');
       for (const card of await cards.all()) {
         await card.scrollIntoViewIfNeeded();
         await card.locator('img').evaluate(img => img.decode());

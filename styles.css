@@ -411,7 +411,8 @@ h2 em {
   max-width: 780px;
   margin-inline: auto;
 }
-.story-chapter h4 {
+.story-chapter h4,
+.resume-card h3 {
   font-size: clamp(18px, 2vw, 22px);
   line-height: 1.4;
   margin: 0;
@@ -917,13 +918,7 @@ h2 em {
   width: 20px;
   z-index: 2;
 }
-/* Résumé cards: original Geist typography, brand borders and colour bands. */
-@font-face {
-  font-family: "Geist Resume";
-  src: url("public/geist-latin.woff2") format("woff2");
-  font-weight: 100 900;
-  font-display: swap;
-}
+/* Résumé card branding with the story's reading typography. */
 .resume-card {
   --card-ink: #202a50;
   --card-border: #76aaa5;
@@ -931,9 +926,9 @@ h2 em {
   background: #fff;
   color: var(--card-ink);
   border: 1.6px solid var(--card-border);
-  font-family: "Geist Resume", Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.32;
+  font-family: inherit;
+  font-size: 17px;
+  line-height: 1.75;
   position: relative;
   overflow: hidden;
   margin-top: 22px;
@@ -974,19 +969,16 @@ h2 em {
   object-fit: contain;
 }
 .resume-card-kicker {
-  font-size: 13.4px;
-  font-weight: 650;
+  font-size: 14px;
+  font-weight: 400;
   margin: 0;
 }
 .resume-card h3 {
-  font-size: 27px;
-  font-weight: 730;
-  line-height: 1;
-  letter-spacing: -0.035em;
+  font-weight: 700;
   margin: 4px 0 6px;
 }
 .resume-card-meta {
-  font-size: 13.8px;
+  font-size: 17px;
   margin: 0;
 }
 .resume-card ul {
