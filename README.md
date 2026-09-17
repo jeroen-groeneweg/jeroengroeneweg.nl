@@ -6,7 +6,7 @@ It is a static site designed for GitHub Pages. Changes merged into `main` deploy
 
 “My Work” contains the BridgeFund story organised by year, introduced by a short explanation of its practical lessons and purpose. Years one through four contain six, nine, seven and six chapters respectively, each with a recap. Year four is explicitly in progress and closes with a reflection across the whole story. Native HTML details and summary elements support mouse, touch and keyboard. Shared name attributes allow only one year and one chapter (including recaps) to be open at a time; opening a chapter keeps its parent year open. A toggle listener resets nested chapters when their year closes. All years and chapters are collapsed on initial load.
 
-Opening a year or chapter positions its heading 16 pixels below the fixed navigation after the accordion layout settles. Scrolling is immediate, avoiding motion and a competing smooth-scroll animation as sibling content closes.
+Opening a year or chapter positions its heading 16 pixels below the fixed navigation after the accordion layout settles. Native smooth scrolling makes the change of reading position visible; visitors with prefers-reduced-motion enabled receive an instant scroll instead. The browser controls the animation duration and easing.
 
 Reading layout: year introductions, chapter summaries and chapter bodies have a centred 780px maximum width within the full-width year cards. The first paragraph of each year uses a larger lead style. Lessons and questions remain together in pale teal; each reading/listening resource is a separate warm-tinted card beneath them. Preserve all wording when changing presentation.
 

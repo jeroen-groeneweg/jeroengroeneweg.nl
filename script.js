@@ -23,7 +23,9 @@ document.querySelectorAll('.story-year, .story-chapter').forEach((section) => {
         const offset = (nav ? nav.getBoundingClientRect().height : 0) + 16;
         window.scrollTo({
           top: window.scrollY + summary.getBoundingClientRect().top - offset,
-          behavior: 'instant',
+          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+            ? 'instant'
+            : 'smooth',
         });
       });
     });

@@ -7,8 +7,18 @@ const { chromium } = require('playwright');
 async function main() {
   const browser = await chromium.launch({ headless: true });
   try {
-    for (const width of [1440, 390]) {
-      const page = await browser.newPage({ viewport: { width, height: 950 } });
+    for (const [width, reducedMotion] of [[1440, 'no-preference'], [390, 'no-preference'], [390, 'reduce']]) {
+      const page = await browser.newPage({ viewport: { width, height: 950 }, reducedMotion });
+      await page.addInitScript(() => {
+        const originalScrollTo = window.scrollTo.bind(window);
+        window.storyScrollBehaviors = [];
+        window.scrollTo = (...args) => {
+          if (args[0] && typeof args[0] === 'object') {
+            window.storyScrollBehaviors.push(args[0].behavior);
+          }
+          return originalScrollTo(...args);
+        };
+      });
       await page.goto(pathToFileURL(path.resolve(__dirname, '../index.html')).href);
       const year = (number) => page.locator('#bridgefund-year-' + number);
       const chapter = (number) => page.locator('#bridgefund-year-1-chapter-' + number);
@@ -76,7 +86,11 @@ async function main() {
           getComputedStyle(element).backgroundColor),
         'rgb(255, 255, 255)',
       );
-      console.log('PASS ' + width + ': exclusive accordions, keyboard, heading alignment and white background');
+      const behaviors = await page.evaluate(() => window.storyScrollBehaviors);
+      assert.ok(behaviors.length > 0);
+      assert.ok(behaviors.every((behavior) =>
+        behavior === (reducedMotion === 'reduce' ? 'instant' : 'smooth')));
+      console.log('PASS ' + width + ' ' + reducedMotion + ': accordion, alignment and scroll preference');
       await page.close();
     }
   } finally {
