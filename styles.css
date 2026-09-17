@@ -952,7 +952,7 @@ h2 em {
   --card-marker: #8e9800;
 }
 .resume-card-tweakers::after {
-  background: linear-gradient(155deg, #ddea3d 0 63%, #161616 63% 100%);
+  background: linear-gradient(to bottom, #ddea3d 0 33.33%, #161616 33.33% 66.67%, #a11236ff 66.67% 100%);
 }
 .resume-card-header {
   display: flex;
