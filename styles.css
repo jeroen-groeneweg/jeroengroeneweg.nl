@@ -1357,3 +1357,26 @@ footer {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Arcade build story */
+.project-card.arcade { background: #123e4b; color: #fff; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); }
+.arcade .project-visual { background: #092e3b; align-self: start; }
+.arcade .project-visual::after { content: none; }
+.arcade .project-visual img { display: block; width: 100%; height: auto; }
+.arcade .project-text { align-self: center; padding: 28px; }
+.arcade .project-text h3 { font-size: clamp(26px, 2.4vw, 34px); }
+.arcade .project-text .arcade-copy { font-family: inherit; font-size: 15px; line-height: 1.65; letter-spacing: normal; text-transform: none; margin: 20px 0; color: #e0ecef; }
+.arcade-link { display: inline-block; color: #a7f4dd; font-weight: 700; text-underline-offset: 4px; line-height: 1.5; }
+.arcade .arcade-link span { display: inline; font-size: inherit; }
+.arcade .project-text .arcade-source { font-size: 10px; line-height: 1.6; margin-top: 10px; }
+.arcade-gallery { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; padding: 0 28px 28px; }
+.arcade-gallery figure { margin: 0; }
+.arcade-gallery img { display: block; width: 100%; height: auto; }
+.arcade-gallery figcaption { font-size: 13px; line-height: 1.5; color: #e0ecef; margin-top: 10px; }
+@media (max-width: 1000px) {
+  .project-card.arcade { grid-template-columns: 1fr; }
+  .arcade .project-visual img { max-width: 450px; }
+}
+@media (max-width: 540px) {
+  .arcade-gallery { grid-template-columns: 1fr; }
+}

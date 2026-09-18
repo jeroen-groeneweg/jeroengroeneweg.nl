@@ -1,0 +1,34 @@
+const assert = require('node:assert/strict');
+const { chromium } = require('playwright');
+const { pathToFileURL } = require('node:url');
+const path = require('node:path');
+(async () => {
+  const browser = await chromium.launch();
+  try {
+    for (const width of [320, 390, 760, 1024, 1440]) {
+      const page = await browser.newPage({ viewport: { width, height: 1000 } });
+      await page.goto(pathToFileURL(path.resolve(__dirname, '../index.html')).href);
+      const panel = page.locator('#project-panel');
+      for (const project of ['games', 'home', 'arcade']) {
+        await page.locator(`[data-project="${project}"]`).focus();
+        await page.keyboard.press('Enter');
+        assert.equal(await page.locator(`[data-project="${project}"]`).getAttribute('aria-selected'), 'true');
+        assert.ok(await panel.evaluate((el, name) => el.classList.contains(name), project));
+      }
+      assert.equal(await panel.locator('img').count(), 3);
+      for (const img of await panel.locator('img').all()) {
+        await img.scrollIntoViewIfNeeded();
+        await img.evaluate(el => el.decode());
+        assert.ok(await img.evaluate(el => el.naturalWidth > 0 && Boolean(el.alt)));
+      }
+      assert.match(await panel.locator('.arcade-link').getAttribute('href'), /^https:\/\/www.arcadewinkel.nl\/blog\//);
+      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+      assert.ok(await panel.evaluate(el => [...el.querySelectorAll('img, h3, p, a, figcaption')].every(child => {
+        const r = child.getBoundingClientRect(); return r.left >= 0 && r.right <= innerWidth;
+      })));
+      await panel.screenshot({ path: `/tmp/arcade-project-${width}.png` });
+      await page.close();
+      console.log(`PASS arcade story and project switching at ${width}px`);
+    }
+  } finally { await browser.close(); }
+})().catch(error => { console.error(error); process.exitCode = 1; });

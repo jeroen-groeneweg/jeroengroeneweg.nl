@@ -146,8 +146,7 @@ const projectData = {
 };
 
 const projectPanel = document.querySelector('#project-panel');
-const projectVisual = projectPanel.querySelector('.project-visual');
-const projectText = projectPanel.querySelector('.project-text');
+const arcadeContent = projectPanel.innerHTML;
 
 document.querySelectorAll('[data-project]').forEach((button) => {
   button.addEventListener('click', () => {
@@ -157,7 +156,8 @@ document.querySelectorAll('[data-project]').forEach((button) => {
       item.setAttribute('aria-selected', String(item === button));
     });
     projectPanel.className = `project-card ${project.className}`;
-    projectVisual.innerHTML = '<i></i><i></i><i></i>';
-    projectText.innerHTML = `<p>${project.label}</p><h3>${project.title}</h3><span>${project.detail}</span>`;
+    projectPanel.innerHTML = button.dataset.project === 'arcade'
+      ? arcadeContent
+      : `<div class="project-visual" aria-hidden="true"><i></i><i></i><i></i></div><div class="project-text"><p>${project.label}</p><h3>${project.title}</h3><span>${project.detail}</span></div>`;
   });
 });
