@@ -2,6 +2,8 @@
 
 The public portfolio site for Jeroen Groeneweg.
 
+Header animation: expand the JG. mark into Jeroen Groeneweg when the existing navigation becomes fixed after 48px of scrolling; reverse at the top. CSS reveals the first and last names with a slight stagger, upward motion and blur, while the teal dot fades out. The home link keeps a stable accessible name. Reduced motion disables transitions. Scope is limited to the wordmark; the main risk is overlap with navigation on narrow screens. Run `node tests/wordmark.cjs` to check both scroll directions, mobile menu access, restored scroll state, reduced motion and fit at mobile and desktop widths.
+
 The contact LinkedIn button includes a monochrome, decorative inline SVG icon that inherits the button colour and leaves its accessible link label unchanged.
 
 Earlier Work reproduces the three executive résumé cards with their original text, logos, brand borders and right-hand colour bands. Typography matches the BridgeFund chapters: Manrope, 17px body text with 1.75 line spacing, and responsive 18–22px bold headings. Desktop uses two bullet columns; screens at 760px and below use one column and a narrower decorative band for readability. Run `node tests/resume-cards.cjs` to check typography parity, headings, bullet counts, image loading and responsive columns. The source résumé's BridgeFund profit wording is preserved verbatim and differs from the later story figures; changes to those claims require an editorial decision.

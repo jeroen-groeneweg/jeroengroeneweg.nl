@@ -40,8 +40,74 @@ a {
   font-weight: 800;
   letter-spacing: -0.08em;
 }
-.wordmark span {
+.wordmark-dot {
   color: #68e2d1;
+}
+.wordmark {
+  flex-shrink: 0;
+  line-height: 1.4;
+}
+.wordmark-name {
+  display: inline-flex;
+  align-items: baseline;
+  white-space: nowrap;
+  transition: letter-spacing 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.wordmark-reveal {
+  display: inline-grid;
+  grid-template-columns: 0fr;
+  opacity: 0;
+  transition: grid-template-columns 700ms cubic-bezier(0.22, 1, 0.36, 1), opacity 350ms ease;
+}
+.wordmark-reveal > span {
+  overflow: hidden;
+  min-width: 0;
+  transform: translateY(0.35em);
+  filter: blur(4px);
+  transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1), filter 500ms ease;
+}
+.wordmark-dot {
+  display: inline-block;
+  max-width: 0.4em;
+  opacity: 1;
+  transition: opacity 200ms ease, transform 500ms ease, max-width 700ms ease;
+}
+.nav.is-scrolled .wordmark-name {
+  letter-spacing: -0.045em;
+}
+.nav.is-scrolled .wordmark-reveal {
+  grid-template-columns: 1fr;
+  opacity: 1;
+}
+.nav.is-scrolled .wordmark-reveal > span {
+  transform: translateY(0);
+  filter: blur(0);
+}
+.nav.is-scrolled .wordmark-last,
+.nav.is-scrolled .wordmark-last > span {
+  transition-delay: 90ms;
+}
+.nav.is-scrolled .wordmark-dot {
+  max-width: 0;
+  opacity: 0;
+  transform: translate(0.3em, -0.4em) scale(0.5);
+}
+.wordmark:focus-visible {
+  outline: 2px solid #68e2d1;
+  outline-offset: 6px;
+  border-radius: 3px;
+}
+@media (max-width: 760px) {
+  .wordmark { font-size: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wordmark-name,
+  .wordmark-reveal,
+  .wordmark-reveal > span,
+  .wordmark-dot {
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
 }
 .nav-links {
   display: flex;
