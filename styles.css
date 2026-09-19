@@ -1382,7 +1382,7 @@ footer {
 }
 
 /* Playable Pong project */
-.project-card.games { display: block; background: #000; color: #fff; min-width: 0; }
+.project-card.games { display: block; background: #123e4b; color: #fff; min-width: 0; }
 .pong { padding: clamp(14px, 3vw, 28px); }
 .pong-heading h3 { font-size: 30px; }
 .pong-heading p, #pong-help { font-size: 13px; line-height: 1.6; color: #ccc; margin: 10px 0; }
