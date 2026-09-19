@@ -147,6 +147,7 @@ const projectData = {
 
 const projectPanel = document.querySelector('#project-panel');
 const arcadeContent = projectPanel.innerHTML;
+let disposeProject = () => {};
 
 document.querySelectorAll('[data-project]').forEach((button) => {
   button.addEventListener('click', () => {
@@ -155,7 +156,13 @@ document.querySelectorAll('[data-project]').forEach((button) => {
       item.classList.toggle('active', item === button);
       item.setAttribute('aria-selected', String(item === button));
     });
+    disposeProject();
+    disposeProject = () => {};
     projectPanel.className = `project-card ${project.className}`;
+    if (button.dataset.project === 'games') {
+      disposeProject = PortfolioPong.mount(projectPanel);
+      return;
+    }
     projectPanel.innerHTML = button.dataset.project === 'arcade'
       ? arcadeContent
       : `<div class="project-visual" aria-hidden="true"><i></i><i></i><i></i></div><div class="project-text"><p>${project.label}</p><h3>${project.title}</h3><span>${project.detail}</span></div>`;

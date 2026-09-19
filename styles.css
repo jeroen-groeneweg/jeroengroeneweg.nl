@@ -1380,3 +1380,16 @@ footer {
 @media (max-width: 540px) {
   .arcade-gallery { grid-template-columns: 1fr; }
 }
+
+/* Playable Pong project */
+.project-card.games { display: block; background: #000; color: #fff; min-width: 0; }
+.pong { padding: clamp(14px, 3vw, 28px); }
+.pong-heading h3 { font-size: 30px; }
+.pong-heading p, #pong-help { font-size: 13px; line-height: 1.6; color: #ccc; margin: 10px 0; }
+.pong-score { font-family: monospace; text-align: center; margin: 18px 0 10px; }
+.pong canvas { display: block; width: 100%; height: auto; background: #000; }
+.pong canvas:focus-visible, .pong button:focus-visible { outline: 3px solid #a7f4dd; outline-offset: 4px; }
+.pong-status { font-size: 14px; line-height: 1.5; margin: 16px 0; }
+.pong-controls { display: flex; flex-wrap: wrap; gap: 10px; }
+.pong-controls button { min-height: 44px; min-width: 44px; background: #fff; color: #000; border: 1px solid #fff; padding: 10px 14px; font: inherit; font-size: 14px; cursor: pointer; }
+.pong-controls [data-move] { touch-action: none; user-select: none; }
