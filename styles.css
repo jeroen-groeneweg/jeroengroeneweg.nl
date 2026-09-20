@@ -809,15 +809,17 @@ h2 em {
   font-size: 18px;
   line-height: 1.55;
   margin: 34px 0 58px;
-  max-width: 570px;
+  max-width: 800px;
 }
 .project-layout {
   display: grid;
   gap: 35px;
-  grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.9fr);
+  grid-template-columns: minmax(0, 1fr);
 }
 .project-tabs {
   border-top: 1px solid rgba(255, 255, 255, 0.34);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 .project-tabs button {
   align-items: center;
@@ -831,7 +833,7 @@ h2 em {
   font-weight: 700;
   gap: 11px;
   grid-template-columns: 25px 1fr auto;
-  padding: 21px 0;
+  padding: 21px 15px 21px 0;
   text-align: left;
   width: 100%;
 }

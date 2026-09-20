@@ -9,6 +9,15 @@ const path = require('node:path');
       const page = await browser.newPage({ viewport: { width, height: 1000 } });
       await page.goto(pathToFileURL(path.resolve(__dirname, '../index.html')).href);
       const panel = page.locator('#project-panel');
+      const tabsBox = await page.locator('.project-tabs').boundingBox();
+      const panelBox = await panel.boundingBox();
+      const layoutBox = await page.locator('.project-layout').boundingBox();
+      assert.ok(tabsBox.y + tabsBox.height <= panelBox.y, 'Project buttons sit above content');
+      assert.ok(Math.abs(panelBox.width - layoutBox.width) < 1, 'Project uses the full layout width');
+      const introWidth = await page.locator('.project-intro').evaluate(el => el.getBoundingClientRect().width);
+      assert.ok(introWidth <= 800);
+      if (width === 1440) assert.equal(introWidth, 800);
+
       for (const project of ['games', 'home', 'arcade']) {
         await page.locator(`[data-project="${project}"]`).focus();
         await page.keyboard.press('Enter');
