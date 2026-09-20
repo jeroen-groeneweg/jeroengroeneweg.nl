@@ -1,5 +1,5 @@
 import { createGame, start, step, WIDTH, HEIGHT, PADDLE } from './pong-engine';
-export function mount(host: HTMLElement): () => void {
+export function mount(host: HTMLElement, focus = true): () => void {
   host.innerHTML = `<section class="pong" aria-label="Playable Pong game">
     <header class="pong-heading"><h3>Pong</h3><p>You vs computer · First to 5</p></header>
     <div class="pong-score" aria-live="polite" aria-atomic="true">You 0 — 0 Computer</div>
@@ -71,6 +71,6 @@ export function mount(host: HTMLElement): () => void {
     for (const name of ['pointerup', 'pointercancel', 'lostpointercapture']) control.addEventListener(name, () => { touch = 0; }, options);
   });
   const observer = new IntersectionObserver(entries => { if (!entries[0].isIntersecting) pause(); });
-  observer.observe(canvas); draw(); canvas.focus({ preventScroll: true });
+  observer.observe(canvas); draw(); if (focus) canvas.focus({ preventScroll: true });
   return () => { cancelAnimationFrame(frame); events.abort(); observer.disconnect(); };
 }

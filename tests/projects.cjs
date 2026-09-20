@@ -18,11 +18,18 @@ const path = require('node:path');
       assert.ok(introWidth <= 800);
       if (width === 1440) assert.equal(introWidth, 800);
 
+      await page.evaluate(() => document.fonts.ready);
+      const stageHeight = await panel.evaluate(el => el.getBoundingClientRect().height);
+      const contactTop = await page.locator('#contact').evaluate(el => el.getBoundingClientRect().top + scrollY);
       for (const project of ['games', 'home', 'arcade']) {
         await page.locator(`[data-project="${project}"]`).focus();
         await page.keyboard.press('Enter');
         assert.equal(await page.locator(`[data-project="${project}"]`).getAttribute('aria-selected'), 'true');
         assert.ok(await panel.evaluate((el, name) => el.classList.contains(name), project));
+        assert.ok(Math.abs((await panel.boundingBox()).height - stageHeight) < 1, 'Equal panel height');
+        assert.ok(Math.abs(await page.locator('#contact').evaluate(el => el.getBoundingClientRect().top + scrollY) - contactTop) < 1, 'No content jump');
+        assert.equal(await page.locator('.project-inactive:not([inert])').count(), 0);
+
       }
       assert.equal(await panel.locator('img').count(), 3);
       for (const img of await panel.locator('img').all()) {

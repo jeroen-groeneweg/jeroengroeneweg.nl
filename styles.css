@@ -1361,22 +1361,22 @@ footer {
 }
 
 /* Arcade build story */
-.project-card.arcade { background: #123e4b; color: #fff; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); }
-.arcade .project-visual { background: #092e3b; align-self: start; }
+.project-card.arcade { background: #123e4b; color: #fff; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; padding: 28px; align-content: start; }
+.arcade .project-visual { background: transparent; align-self: start; justify-content: flex-start; }
 .arcade .project-visual::after { content: none; }
-.arcade .project-visual img { display: block; width: 100%; height: auto; }
-.arcade .project-text { align-self: center; padding: 28px; }
+.arcade .project-visual img { display: block; width: auto; max-width: 100%; height: auto; max-height: 380px; }
+.arcade .project-text { align-self: start; padding: 0; }
 .arcade .project-text h3 { font-size: clamp(26px, 2.4vw, 34px); }
 .arcade .project-text .arcade-copy { font-family: inherit; font-size: 15px; line-height: 1.65; letter-spacing: normal; text-transform: none; margin: 20px 0; color: #e0ecef; }
 .arcade-link { display: inline-block; color: #a7f4dd; font-weight: 700; text-underline-offset: 4px; line-height: 1.5; }
 .arcade .arcade-link span { display: inline; font-size: inherit; }
 .arcade .project-text .arcade-source { font-size: 10px; line-height: 1.6; margin-top: 10px; }
-.arcade-gallery { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; padding: 0 28px 28px; }
+.arcade-gallery { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; padding: 0; }
 .arcade-gallery figure { margin: 0; }
-.arcade-gallery img { display: block; width: 100%; height: auto; }
+.arcade-gallery img { display: block; width: 100%; height: auto; max-height: 300px; object-fit: contain; object-position: left; }
 .arcade-gallery figcaption { font-size: 13px; line-height: 1.5; color: #e0ecef; margin-top: 10px; }
-@media (max-width: 1000px) {
-  .project-card.arcade { grid-template-columns: 1fr; }
+@media (max-width: 760px) {
+  .project-card.arcade { grid-template-columns: 1fr; padding: 20px; }
   .arcade .project-visual img { max-width: 450px; }
 }
 @media (max-width: 540px) {
@@ -1401,7 +1401,7 @@ footer {
 .game-story figure { margin: 0; min-width: 0; }
 .game-story img, .game-story video { display: block; width: 100%; height: auto; background: #000; }
 .game-story figcaption { color: #e0ecef; font-size: 13px; line-height: 1.5; margin-top: 10px; }
-.game-story-copy { align-self: center; }
+.game-story-copy { align-self: start; }
 .game-story-copy h3 { font-size: clamp(26px, 2.4vw, 34px); line-height: 1.1; }
 .game-story-copy p { font-size: 15px; line-height: 1.65; margin: 18px 0 0; color: #e0ecef; }
 .game-story-copy .game-kicker { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 13px; }
@@ -1410,3 +1410,8 @@ footer {
 @media (max-width: 760px) {
   .game-story { grid-template-columns: minmax(0, 1fr); padding: 20px; }
 }
+
+/* Overlapping grid panels reserve the tallest project's natural height. */
+.project-stage { display: grid; min-width: 0; }
+.project-stage > .project-card { grid-area: 1 / 1; min-width: 0; }
+.project-stage > .project-inactive { visibility: hidden; pointer-events: none; }

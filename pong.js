@@ -109,7 +109,7 @@ var PortfolioPong = (() => {
   }
 
   // src/pong.ts
-  function mount(host) {
+  function mount(host, focus = true) {
     host.innerHTML = `<section class="pong" aria-label="Playable Pong game">
     <header class="pong-heading"><h3>Pong</h3><p>You vs computer \xB7 First to 5</p></header>
     <div class="pong-score" aria-live="polite" aria-atomic="true">You 0 \u2014 0 Computer</div>
@@ -240,7 +240,7 @@ var PortfolioPong = (() => {
     });
     observer.observe(canvas);
     draw();
-    canvas.focus({ preventScroll: true });
+    if (focus) canvas.focus({ preventScroll: true });
     return () => {
       cancelAnimationFrame(frame);
       events.abort();

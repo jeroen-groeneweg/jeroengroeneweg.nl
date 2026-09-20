@@ -27,7 +27,7 @@ const path = require('node:path');
    assert.ok(await page.locator('.game-story').evaluate(el=>[...el.querySelectorAll('img,video,canvas,h3,p')].every(el=>{const r=el.getBoundingClientRect();return r.left>=0&&r.right<=innerWidth;})));
    await page.locator('#project-panel').screenshot({path:`/tmp/game-media-${width}.png`});
    await page.locator('[data-project="arcade"]').click();
-   assert.equal(await page.locator('video').count(),0);
+   assert.equal(await page.locator('video:visible').count(),0);
    await page.locator('[data-project="games"]').click();
    assert.ok(await page.locator('video').evaluate(el=>el.paused));
    assert.equal(await page.locator('.pong-status').innerText(),'Press Enter to start');

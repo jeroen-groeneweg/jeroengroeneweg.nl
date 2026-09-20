@@ -35,7 +35,7 @@ const path = require('node:path');
    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
    await page.locator('#project-panel').screenshot({path:`/tmp/pong-${width}.png`});
    await page.locator('[data-project="home"]').click();
-   assert.equal(await page.locator('.pong').count(), 0);
+   assert.equal(await page.locator('.pong:visible').count(), 0);
    await page.locator('[data-project="games"]').click();
    assert.equal(await page.locator('.pong-status').innerText(), 'Press Enter to start');
    assert.deepEqual(errors, []);

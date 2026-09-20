@@ -145,32 +145,45 @@ const projectData = {
   },
 };
 
-const projectPanel = document.querySelector('#project-panel');
-const arcadeContent = projectPanel.innerHTML;
+// Keep all project panels in one grid cell so the tallest reserves the space.
+const arcadePanel = document.querySelector('#project-panel');
+const projectStage = document.createElement('div');
+projectStage.className = 'project-stage';
+arcadePanel.replaceWith(projectStage);
+projectStage.append(arcadePanel);
+const gamePanel = document.createElement('article');
+gamePanel.className = 'project-card games';
+gamePanel.append(document.querySelector('#game-project-template').content.cloneNode(true));
+const homePanel = document.createElement('article');
+homePanel.className = 'project-card home';
+homePanel.innerHTML = `<div class="project-visual" aria-hidden="true"><i></i><i></i><i></i></div><div class="project-text"><p>${projectData.home.label}</p><h3>${projectData.home.title}</h3><span>${projectData.home.detail}</span></div>`;
+projectStage.append(gamePanel, homePanel);
+const projectPanels = { arcade: arcadePanel, games: gamePanel, home: homePanel };
+// Render the idle game once to reserve its real responsive height, without focus.
+PortfolioPong.mount(gamePanel.querySelector('.game-pong'), false)();
 let disposeProject = () => {};
-
-document.querySelectorAll('[data-project]').forEach((button) => {
-  button.addEventListener('click', () => {
-    const project = projectData[button.dataset.project];
-    document.querySelectorAll('[data-project]').forEach((item) => {
-      item.classList.toggle('active', item === button);
-      item.setAttribute('aria-selected', String(item === button));
-    });
-    disposeProject();
-    disposeProject = () => {};
-    projectPanel.className = `project-card ${project.className}`;
-    if (button.dataset.project === 'games') {
-      projectPanel.replaceChildren(document.querySelector('#game-project-template').content.cloneNode(true));
-      const stopPong = PortfolioPong.mount(projectPanel.querySelector('.game-pong'));
-      const video = projectPanel.querySelector('video');
-      disposeProject = () => {
-        video.pause();
-        stopPong();
-      };
-      return;
-    }
-    projectPanel.innerHTML = button.dataset.project === 'arcade'
-      ? arcadeContent
-      : `<div class="project-visual" aria-hidden="true"><i></i><i></i><i></i></div><div class="project-text"><p>${project.label}</p><h3>${project.title}</h3><span>${project.detail}</span></div>`;
+function selectProject(name, focusGame = true) {
+  disposeProject();
+  disposeProject = () => {};
+  for (const [key, panel] of Object.entries(projectPanels)) {
+    const active = key === name;
+    panel.classList.toggle('project-inactive', !active);
+    panel.inert = !active;
+    panel.setAttribute('aria-hidden', String(!active));
+    panel.setAttribute('role', 'tabpanel');
+    if (active) panel.id = 'project-panel'; else panel.removeAttribute('id');
+  }
+  if (name === 'games') {
+    const stopPong = PortfolioPong.mount(gamePanel.querySelector('.game-pong'), focusGame);
+    disposeProject = () => { gamePanel.querySelector('video').pause(); stopPong(); };
+  }
+  document.querySelectorAll('[data-project]').forEach(button => {
+    const active = button.dataset.project === name;
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-selected', String(active));
   });
+}
+selectProject('arcade', false);
+document.querySelectorAll('[data-project]').forEach(button => {
+  button.addEventListener('click', () => selectProject(button.dataset.project));
 });
