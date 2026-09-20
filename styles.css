@@ -1395,3 +1395,18 @@ footer {
 .pong-controls { display: flex; flex-wrap: wrap; gap: 10px; }
 .pong-controls button { min-height: 44px; min-width: 44px; background: #fff; color: #000; border: 1px solid #fff; padding: 10px 14px; font: inherit; font-size: 14px; cursor: pointer; }
 .pong-controls [data-move] { touch-action: none; user-select: none; }
+
+/* Game development story: media and copy above video and playable demo. */
+.game-story { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; padding: 28px; align-items: start; }
+.game-story figure { margin: 0; min-width: 0; }
+.game-story img, .game-story video { display: block; width: 100%; height: auto; background: #000; }
+.game-story figcaption { color: #e0ecef; font-size: 13px; line-height: 1.5; margin-top: 10px; }
+.game-story-copy { align-self: center; }
+.game-story-copy h3 { font-size: clamp(26px, 2.4vw, 34px); line-height: 1.1; }
+.game-story-copy p { font-size: 15px; line-height: 1.65; margin: 18px 0 0; color: #e0ecef; }
+.game-story-copy .game-kicker { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 13px; }
+.game-pong { min-width: 0; }
+.game-pong .pong { padding: 0; }
+@media (max-width: 760px) {
+  .game-story { grid-template-columns: minmax(0, 1fr); padding: 20px; }
+}

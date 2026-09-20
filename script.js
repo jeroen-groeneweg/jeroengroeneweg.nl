@@ -160,7 +160,13 @@ document.querySelectorAll('[data-project]').forEach((button) => {
     disposeProject = () => {};
     projectPanel.className = `project-card ${project.className}`;
     if (button.dataset.project === 'games') {
-      disposeProject = PortfolioPong.mount(projectPanel);
+      projectPanel.replaceChildren(document.querySelector('#game-project-template').content.cloneNode(true));
+      const stopPong = PortfolioPong.mount(projectPanel.querySelector('.game-pong'));
+      const video = projectPanel.querySelector('video');
+      disposeProject = () => {
+        video.pause();
+        stopPong();
+      };
       return;
     }
     projectPanel.innerHTML = button.dataset.project === 'arcade'
