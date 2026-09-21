@@ -1,3 +1,4 @@
+export { mountImages } from './project-photos';
 import { createGame, start, step, WIDTH, HEIGHT, PADDLE } from './pong-engine';
 export function mount(host: HTMLElement, focus = true): () => void {
   host.innerHTML = `<section class="pong" aria-label="Playable Pong game">

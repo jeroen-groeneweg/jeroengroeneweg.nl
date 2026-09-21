@@ -187,3 +187,5 @@ selectProject('arcade', false);
 document.querySelectorAll('[data-project]').forEach(button => {
   button.addEventListener('click', () => selectProject(button.dataset.project));
 });
+
+PortfolioPong.mountImages(projectStage);

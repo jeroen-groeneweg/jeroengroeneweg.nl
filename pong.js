@@ -21,8 +21,50 @@ var PortfolioPong = (() => {
   // src/pong.ts
   var pong_exports = {};
   __export(pong_exports, {
-    mount: () => mount
+    mount: () => mount,
+    mountImages: () => mountImages
   });
+
+  // src/project-photos.ts
+  function mountImages(root) {
+    const dialog = document.createElement("dialog");
+    dialog.className = "photo-modal";
+    dialog.setAttribute("aria-label", "Enlarged project photo");
+    dialog.innerHTML = `<button type="button" class="photo-modal-close" aria-label="Close enlarged photo" autofocus>Close \xD7</button><figure><img alt="" /><figcaption></figcaption></figure>`;
+    document.body.append(dialog);
+    const large = dialog.querySelector("img");
+    const caption = dialog.querySelector("figcaption");
+    const closeButton = dialog.querySelector("button");
+    closeButton.addEventListener("click", () => dialog.close());
+    dialog.addEventListener("keydown", (event) => {
+      if (event.key === "Tab") {
+        event.preventDefault();
+        closeButton.focus();
+      }
+    });
+    dialog.addEventListener("click", (event) => {
+      const rect = dialog.getBoundingClientRect();
+      if (event.target === dialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) dialog.close();
+    });
+    dialog.addEventListener("close", () => document.body.classList.remove("photo-modal-open"));
+    root.querySelectorAll(".arcade img, .game-screenshot img").forEach((photo) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "project-photo";
+      button.setAttribute("aria-label", `Enlarge photo: ${photo.alt}`);
+      button.setAttribute("aria-haspopup", "dialog");
+      photo.replaceWith(button);
+      button.append(photo);
+      button.addEventListener("click", () => {
+        large.src = photo.currentSrc || photo.src;
+        large.alt = photo.alt;
+        caption.textContent = photo.closest("figure")?.querySelector("figcaption")?.textContent || photo.alt;
+        document.body.classList.add("photo-modal-open");
+        dialog.showModal();
+        closeButton.focus();
+      });
+    });
+  }
 
   // src/pong-engine.ts
   var WIDTH = 720;

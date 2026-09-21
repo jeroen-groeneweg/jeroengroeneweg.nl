@@ -1442,3 +1442,18 @@ footer {
   letter-spacing: normal; text-transform: none; color: #e0ecef; margin: 18px 0 0;
 }
 .arcade .arcade-link { margin-top: 18px; }
+
+/* Project photos: monochrome previews, full-colour accessible lightbox. */
+.project-photo { display: block; width: 100%; min-width: 0; padding: 0; border: 0; background: transparent; cursor: zoom-in; text-align: left; }
+.project-photo img { filter: grayscale(1); transition: filter 350ms ease; }
+.project-photo:hover img, .project-photo:focus-visible img { filter: grayscale(0); }
+.project-photo:focus-visible { outline: 3px solid #a7f4dd; outline-offset: 4px; }
+body.photo-modal-open { overflow: hidden; }
+.photo-modal { position: fixed; inset: 0; margin: auto; width: min(1100px, calc(100vw - 32px)); max-width: none; max-height: calc(100dvh - 32px); padding: 20px; border: 1px solid #47717d; background: #123e4b; color: #fff; overflow: auto; }
+.photo-modal::backdrop { background: rgb(0 0 0 / 85%); }
+.photo-modal-close { display: block; margin: 0 0 16px auto; min-height: 44px; padding: 8px 16px; border: 1px solid #fff; background: transparent; color: #fff; font: inherit; cursor: pointer; }
+.photo-modal-close:focus-visible { outline: 3px solid #a7f4dd; outline-offset: 3px; }
+.photo-modal figure { margin: 0; }
+.photo-modal img { display: block; width: 100%; height: auto; max-height: calc(100dvh - 180px); object-fit: contain; }
+.photo-modal figcaption { font-size: 14px; line-height: 1.5; margin-top: 14px; }
+@media (prefers-reduced-motion: reduce) { .project-photo img { transition: none; } }
