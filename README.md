@@ -41,3 +41,5 @@ Projects use the full section width, with the three project buttons above the co
 Run `node tests/game-media.cjs` to verify the game screenshot, video playback, responsive layout, Pong controls and fresh state when switching projects.
 
 Arcade and game development share 28px desktop / 20px mobile insets and top-aligned descriptions. Arcade photos retain their proportions with smaller height caps. Project panels share a grid cell, reserving the tallest natural height at each viewport so switching does not move the contact section. Inactive panels are invisible, inert and hidden from assistive technology; Pong and video stop on exit. `tests/projects.cjs` checks equal panel heights and a stable contact-section position.
+
+The arcade gallery now uses six original article photos: two portrait views of the finished cabinet, followed by a two-column build sequence (wooden panels, drilling, wiring and control-panel artwork). Additional source image numbers are 57, 7 and 45. Landscape thumbnails use a shallow crop on desktop to fill the card, and a 4:3 crop on narrow screens. Matching project heights remain reserved.

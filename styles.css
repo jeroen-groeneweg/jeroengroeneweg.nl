@@ -1415,3 +1415,14 @@ footer {
 .project-stage { display: grid; min-width: 0; }
 .project-stage > .project-card { grid-area: 1 / 1; min-width: 0; }
 .project-stage > .project-inactive { visibility: hidden; pointer-events: none; }
+
+/* Two finished-cabinet views above a compact four-photo build sequence. */
+.arcade .project-visual { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; min-height: 0; }
+.arcade .project-visual img { width: 100%; max-height: none; }
+.arcade-gallery { gap: 22px 28px; }
+.arcade-gallery img { width: 100%; height: auto; aspect-ratio: 16 / 9; max-height: 240px; object-fit: cover; object-position: center; }
+@media (max-width: 540px) {
+  .arcade-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 12px; }
+  .arcade-gallery img { aspect-ratio: 4 / 3; }
+  .arcade .project-visual { gap: 12px; }
+}

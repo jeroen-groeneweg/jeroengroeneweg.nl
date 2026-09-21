@@ -31,7 +31,7 @@ const path = require('node:path');
         assert.equal(await page.locator('.project-inactive:not([inert])').count(), 0);
 
       }
-      assert.equal(await panel.locator('img').count(), 3);
+      assert.equal(await panel.locator('img').count(), 6);
       for (const img of await panel.locator('img').all()) {
         await img.scrollIntoViewIfNeeded();
         await img.evaluate(el => el.decode());
