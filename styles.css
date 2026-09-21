@@ -1426,3 +1426,19 @@ footer {
   .arcade-gallery img { aspect-ratio: 4 / 3; }
   .arcade .project-visual { gap: 12px; }
 }
+
+/* Shared project typography keeps both story columns on the same baseline. */
+.arcade .project-text, .game-story-copy { align-self: start; padding: 0; }
+.arcade .project-text h3, .game-story-copy h3 {
+  font-size: clamp(26px, 2.4vw, 34px); line-height: 1.1; margin: 0;
+}
+.arcade .project-text > p:first-child, .game-story-copy .game-kicker {
+  font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 400;
+  line-height: 1.65; letter-spacing: .08em; text-transform: uppercase;
+  color: #e0ecef; margin: 0 0 13px;
+}
+.arcade .project-text .arcade-copy, .game-story-copy > p:not(.game-kicker) {
+  font-family: inherit; font-size: 15px; font-weight: 400; line-height: 1.65;
+  letter-spacing: normal; text-transform: none; color: #e0ecef; margin: 18px 0 0;
+}
+.arcade .arcade-link { margin-top: 18px; }
