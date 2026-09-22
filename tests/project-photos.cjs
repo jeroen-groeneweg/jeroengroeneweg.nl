@@ -8,7 +8,7 @@ const path = require('node:path');
   for (const width of [320, 760, 1440]) {
    const page = await browser.newPage({viewport:{width,height:950}});
    await page.goto(pathToFileURL(path.resolve(__dirname,'../index.html')).href);
-   assert.equal(await page.locator('.project-photo').count(),7);
+   assert.equal(await page.locator('.project-photo').count(),11);
    const photo=page.locator('#project-panel .project-photo').first();
    await photo.scrollIntoViewIfNeeded();
    const img=photo.locator('img'); await img.evaluate(el=>el.decode());
@@ -45,6 +45,14 @@ const path = require('node:path');
    assert.ok(await gamePhoto.locator('img').evaluate(el=>parseFloat(getComputedStyle(el).transitionDuration) <= 0.00001));
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
    assert.equal(await page.evaluate(()=>document.body.classList.contains('photo-modal-open')),false);
+   await page.locator('[data-project="home"]').click();
+   assert.equal(await page.locator('#project-panel .project-photo').count(),4);
+   const homePhoto = page.locator('#project-panel .project-photo').first();
+   await homePhoto.scrollIntoViewIfNeeded();
+   assert.equal(await homePhoto.locator('img').evaluate(el=>getComputedStyle(el).filter),'grayscale(1)');
+   await homePhoto.click();
+   assert.ok(await dialog.isVisible());
+   await page.keyboard.press('Escape');
    console.log(`PASS photo hover, modal, keyboard, backdrop, focus and fit at ${width}px`);
    await page.close();
   }

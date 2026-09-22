@@ -47,7 +47,7 @@ var PortfolioPong = (() => {
       if (event.target === dialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) dialog.close();
     });
     dialog.addEventListener("close", () => document.body.classList.remove("photo-modal-open"));
-    root.querySelectorAll(".arcade img, .game-screenshot img").forEach((photo) => {
+    root.querySelectorAll(".arcade img, .game-screenshot img, .home-story img").forEach((photo) => {
       const button = document.createElement("button");
       button.type = "button";
       button.className = "project-photo";

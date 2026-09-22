@@ -1420,6 +1420,16 @@ footer {
 .project-stage > .project-card { grid-area: 1 / 1; min-width: 0; }
 .project-stage > .project-inactive { visibility: hidden; pointer-events: none; }
 
+/* Smart-home story uses the same grid, typography and media treatment. */
+.project-card.home { display: block; background: #123e4b; color: #fff; min-width: 0; }
+.home-overview img { max-height: 540px; object-fit: cover; object-position: top; }
+.home-gallery { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.home-gallery img { aspect-ratio: 16 / 9; object-fit: cover; object-position: top; }
+@media (max-width: 760px) {
+  .home-overview img { max-height: none; }
+  .home-gallery { grid-template-columns: minmax(0, 1fr); }
+}
+
 /* Two finished-cabinet views above a compact four-photo build sequence. */
 .arcade .project-visual { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; min-height: 0; }
 .arcade .project-visual img { width: 100%; max-height: none; }

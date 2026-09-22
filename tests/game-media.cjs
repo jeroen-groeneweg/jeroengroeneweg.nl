@@ -24,7 +24,7 @@ const path = require('node:path');
    assert.equal(await page.locator('.pong-status').innerText(),'Game on');
    await page.locator('canvas').press('Escape');
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
-   assert.ok(await page.locator('.game-story').evaluate(el=>[...el.querySelectorAll('img,video,canvas,h3,p')].every(el=>{const r=el.getBoundingClientRect();return r.left>=0&&r.right<=innerWidth;})));
+   assert.ok(await page.locator('#project-panel .game-story').evaluate(el=>[...el.querySelectorAll('img,video,canvas,h3,p')].every(el=>{const r=el.getBoundingClientRect();return r.left>=0&&r.right<=innerWidth;})));
    await page.locator('#project-panel').screenshot({path:`/tmp/game-media-${width}.png`});
    await page.locator('[data-project="arcade"]').click();
    assert.equal(await page.locator('video:visible').count(),0);

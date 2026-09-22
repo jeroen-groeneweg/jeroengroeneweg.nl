@@ -158,7 +158,7 @@ const gameVideo = gamePanel.querySelector('video');
 gameVideo.addEventListener('play', () => gameVideo.classList.add('is-playing'));
 const homePanel = document.createElement('article');
 homePanel.className = 'project-card home';
-homePanel.innerHTML = `<div class="project-visual" aria-hidden="true"><i></i><i></i><i></i></div><div class="project-text"><p>${projectData.home.label}</p><h3>${projectData.home.title}</h3><span>${projectData.home.detail}</span></div>`;
+homePanel.append(document.querySelector('#home-project-template').content.cloneNode(true));
 projectStage.append(gamePanel, homePanel);
 const projectPanels = { arcade: arcadePanel, games: gamePanel, home: homePanel };
 // Render the idle game once to reserve its real responsive height, without focus.

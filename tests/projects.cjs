@@ -19,7 +19,7 @@ const path = require('node:path');
       if (width === 1440) assert.equal(introWidth, 800);
 
       await page.evaluate(() => document.fonts.ready);
-      const textOffsets = await page.evaluate(() => ['.arcade .project-text', '.game-story-copy'].map(selector => {
+      const textOffsets = await page.evaluate(() => ['.arcade .project-text', '.game-story-copy:not(.home-story-copy)', '.home-story-copy'].map(selector => {
         const block = document.querySelector(selector);
         return [...block.children].slice(0, 3).map(child => ({
           top: child.getBoundingClientRect().top - block.getBoundingClientRect().top,
@@ -27,7 +27,8 @@ const path = require('node:path');
           margin: getComputedStyle(child).margin,
         }));
       }));
-      assert.deepEqual(textOffsets[0], textOffsets[1], 'Project text uses identical offsets and typography');
+      assert.deepEqual(textOffsets[0], textOffsets[1], 'Arcade and game text use identical offsets and typography');
+      assert.deepEqual(textOffsets[1], textOffsets[2], 'Game and smart-home text use identical offsets and typography');
       const stageHeight = await panel.evaluate(el => el.getBoundingClientRect().height);
       const contactTop = await page.locator('#contact').evaluate(el => el.getBoundingClientRect().top + scrollY);
       for (const project of ['games', 'home', 'arcade']) {
