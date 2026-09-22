@@ -48,6 +48,12 @@ const path = require('node:path');
         assert.ok(await img.evaluate(el => el.naturalWidth > 0 && Boolean(el.alt)));
       }
       assert.match(await panel.locator('.arcade-link').getAttribute('href'), /^https:\/\/www.arcadewinkel.nl\/blog\//);
+      await page.locator('[data-project="home"]').click();
+      assert.deepEqual(await panel.locator('.home-links a').evaluateAll(links => links.map(link => link.href)), [
+        'https://www.home-assistant.io/',
+        'https://shop.everythingsmart.io/products/everything-presence-pro',
+        'https://z-wavealliance.org/',
+      ]);
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
       assert.ok(await panel.evaluate(el => [...el.querySelectorAll('img, h3, p, a, figcaption')].every(child => {
         const r = child.getBoundingClientRect(); return r.left >= 0 && r.right <= innerWidth;

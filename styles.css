@@ -1425,9 +1425,12 @@ footer {
 .home-overview img { max-height: 540px; object-fit: cover; object-position: top; }
 .home-gallery { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
 .home-gallery img { aspect-ratio: 16 / 9; object-fit: cover; object-position: top; }
+.home-links { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-top: 20px; }
+.home-links .arcade-link { font-size: 14px; }
 @media (max-width: 760px) {
   .home-overview img { max-height: none; }
   .home-gallery { grid-template-columns: minmax(0, 1fr); }
+  .home-links { align-items: flex-start; flex-direction: column; }
 }
 
 /* Two finished-cabinet views above a compact four-photo build sequence. */

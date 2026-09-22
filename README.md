@@ -51,3 +51,5 @@ Project photos are monochrome until hover or keyboard focus, with a 350ms fade t
 The gameplay video poster is also monochrome and fades to colour on hover or keyboard focus. Once playback starts, the video remains in colour. Reduced-motion preferences disable the fade.
 
 Smart-home systems uses the same two-column story layout and typography as Game development: an overview image beside the description, followed by a three-image gallery for energy, room control and presence mapping. Its four screenshots live in `public/home/`, share the monochrome hover treatment and open in the common enlarged-image viewer. On mobile, the content and gallery stack into one column.
+
+The Smart-home description links to the official Home Assistant site, the Everything Presence Pro product page and the Z-Wave Alliance. Links wrap on wider screens and stack on mobile. `tests/projects.cjs` checks their exact destinations.
