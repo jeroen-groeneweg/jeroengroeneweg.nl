@@ -1415,10 +1415,10 @@ footer {
   .game-story { grid-template-columns: minmax(0, 1fr); padding: 20px; }
 }
 
-/* Overlapping grid panels reserve the tallest project's natural height. */
+/* Only the active project contributes to the card height. */
 .project-stage { display: grid; min-width: 0; }
 .project-stage > .project-card { grid-area: 1 / 1; min-width: 0; }
-.project-stage > .project-inactive { visibility: hidden; pointer-events: none; }
+.project-stage > .project-card.project-inactive { display: none; }
 
 /* Smart-home story uses the same grid, typography and media treatment. */
 .project-card.home { display: block; background: #123e4b; color: #fff; min-width: 0; }
@@ -1476,4 +1476,16 @@ body.photo-modal-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .project-photo img,
   .game-video video { transition: none; }
+}
+
+/* Mobile cards follow their content instead of stretching to a hidden project. */
+@media (max-width: 760px) {
+  .project-stage > .project-card { min-height: 0; margin-top: 0; }
+  .project-card.arcade, .game-story { padding: clamp(14px, 3.5vw, 20px); gap: 20px; }
+  .arcade .project-visual { width: 100%; gap: 12px; }
+  .arcade .project-visual img { max-width: 100%; }
+  .arcade-gallery { gap: 20px 12px; }
+  .arcade-gallery img { aspect-ratio: 4 / 3; max-height: none; }
+  .home-gallery { gap: 20px; }
+  .home-gallery img { aspect-ratio: auto; }
 }

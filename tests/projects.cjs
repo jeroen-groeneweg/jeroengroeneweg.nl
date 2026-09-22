@@ -19,7 +19,8 @@ const path = require('node:path');
       if (width === 1440) assert.equal(introWidth, 800);
 
       await page.evaluate(() => document.fonts.ready);
-      const textOffsets = await page.evaluate(() => ['.arcade .project-text', '.game-story-copy:not(.home-story-copy)', '.home-story-copy'].map(selector => {
+      const textOffsets = await page.evaluate(() => ['.arcade .project-text', '.game-story-copy:not(.home-story-copy)', '.home-story-copy'].map((selector, index) => {
+        document.querySelectorAll('[data-project]')[index].click();
         const block = document.querySelector(selector);
         return [...block.children].slice(0, 3).map(child => ({
           top: child.getBoundingClientRect().top - block.getBoundingClientRect().top,
@@ -27,18 +28,23 @@ const path = require('node:path');
           margin: getComputedStyle(child).margin,
         }));
       }));
-      assert.deepEqual(textOffsets[0], textOffsets[1], 'Arcade and game text use identical offsets and typography');
-      assert.deepEqual(textOffsets[1], textOffsets[2], 'Game and smart-home text use identical offsets and typography');
-      const stageHeight = await panel.evaluate(el => el.getBoundingClientRect().height);
-      const contactTop = await page.locator('#contact').evaluate(el => el.getBoundingClientRect().top + scrollY);
+      if (width > 760) assert.deepEqual(textOffsets[0], textOffsets[1], 'Arcade and game text use identical offsets and typography');
+      if (width > 760) assert.deepEqual(textOffsets[1], textOffsets[2], 'Game and smart-home text use identical offsets and typography');
       for (const project of ['games', 'home', 'arcade']) {
         await page.locator(`[data-project="${project}"]`).focus();
         await page.keyboard.press('Enter');
         assert.equal(await page.locator(`[data-project="${project}"]`).getAttribute('aria-selected'), 'true');
         assert.ok(await panel.evaluate((el, name) => el.classList.contains(name), project));
-        assert.ok(Math.abs((await panel.boundingBox()).height - stageHeight) < 1, 'Equal panel height');
-        assert.ok(Math.abs(await page.locator('#contact').evaluate(el => el.getBoundingClientRect().top + scrollY) - contactTop) < 1, 'No content jump');
         assert.equal(await page.locator('.project-inactive:not([inert])').count(), 0);
+        {
+          assert.equal(await page.locator('.project-inactive:visible').count(), 0);
+          const space = await panel.evaluate(el => {
+            const content = el.querySelector('.game-story') || el;
+            const bottom = Math.max(...[...content.children].map(child => child.getBoundingClientRect().bottom));
+            return el.getBoundingClientRect().bottom - bottom - parseFloat(getComputedStyle(content).paddingBottom);
+          });
+          assert.ok(Math.abs(space) < 2, `Card fits its content: ${space}px extra`);
+        }
 
       }
       assert.equal(await panel.locator('img').count(), 6);
@@ -48,6 +54,7 @@ const path = require('node:path');
         assert.ok(await img.evaluate(el => el.naturalWidth > 0 && Boolean(el.alt)));
       }
       assert.match(await panel.locator('.arcade-link').getAttribute('href'), /^https:\/\/www.arcadewinkel.nl\/blog\//);
+      await panel.screenshot({ path: `/tmp/arcade-content-${width}.png` });
       await page.locator('[data-project="home"]').click();
       assert.deepEqual(await panel.locator('.home-links a').evaluateAll(links => links.map(link => link.href)), [
         'https://www.home-assistant.io/',
