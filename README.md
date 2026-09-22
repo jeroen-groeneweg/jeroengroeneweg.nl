@@ -46,4 +46,6 @@ The arcade gallery now uses six original article photos: two portrait views of t
 
 Arcade and game-development descriptions share explicit kicker line height, heading line height, paragraph margins and typography, preventing inherited styles from offsetting their text.
 
-Project photos are monochrome until hover or keyboard focus, with a 350ms fade to colour (instant with reduced motion). Clicking or pressing Enter opens the original image in a full-colour native modal dialog. Close, Escape or clicking the backdrop dismisses it and restores focus. The background is locked while open; inactive project photos remain inert. Video and Pong retain their colours. Source: `src/project-photos.ts`, bundled through the existing Pong build command. Run `node tests/project-photos.cjs` for viewer checks.
+Project photos are monochrome until hover or keyboard focus, with a 350ms fade to colour (instant with reduced motion). Clicking or pressing Enter opens the original image in a full-colour native modal dialog. Close, Escape or clicking the backdrop dismisses it and restores focus. The background is locked while open; inactive project photos remain inert. Pong retains its colours. Source: `src/project-photos.ts`, bundled through the existing Pong build command. Run `node tests/project-photos.cjs` for viewer checks.
+
+The gameplay video poster is also monochrome and fades to colour on hover or keyboard focus. Once playback starts, the video remains in colour. Reduced-motion preferences disable the fade.

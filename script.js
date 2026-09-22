@@ -154,6 +154,8 @@ projectStage.append(arcadePanel);
 const gamePanel = document.createElement('article');
 gamePanel.className = 'project-card games';
 gamePanel.append(document.querySelector('#game-project-template').content.cloneNode(true));
+const gameVideo = gamePanel.querySelector('video');
+gameVideo.addEventListener('play', () => gameVideo.classList.add('is-playing'));
 const homePanel = document.createElement('article');
 homePanel.className = 'project-card home';
 homePanel.innerHTML = `<div class="project-visual" aria-hidden="true"><i></i><i></i><i></i></div><div class="project-text"><p>${projectData.home.label}</p><h3>${projectData.home.title}</h3><span>${projectData.home.detail}</span></div>`;
