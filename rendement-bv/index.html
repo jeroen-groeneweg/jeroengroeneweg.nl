@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Rekentool: vergelijk wat vrij vermogen in je BV oplevert na vennootschapsbelasting — sparen, obligaties, MKB-leningen, ETF's en vastgoed — met een check op het depositogarantiestelsel." />
+    <title>Rendement BV-vermogen | Jeroen Groeneweg</title>
+    <link rel="icon" href="../public/favicon.svg" type="image/svg+xml" sizes="any" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet" />
+    <style>
+      /* Huisstijl jeroengroeneweg.nl: cream pagina, inkt-blauw, teal accent; Manrope / Playfair / DM Mono */
+      :root {
+        --ink: #17244b; --deep: #063147; --teal: #056a7a; --cream: #f6eee3; --paper: #ffffff;
+        --muted: #4f5a78; --line: rgba(23, 36, 75, 0.16); --teal-soft: #e3f1f0;
+        --s-bank: #8a8fa3; --s-spaar: #2f6fb0; --s-obl: #6a42f4; --s-mkb: #b7791f; --s-etf: #06ad93; --s-vg: #b5453a;
+        --warn: #a8461f; --warn-soft: #f7e3d8; --ok: #2e7d4f; --ok-soft: #e2f1e7;
+        --f-display: "Playfair Display", Georgia, serif;
+        --f-body: Manrope, Arial, sans-serif;
+        --f-num: "DM Mono", ui-monospace, Menlo, monospace;
+        color-scheme: light;
+      }
+      * { box-sizing: border-box; }
+      body { background: var(--cream); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.6; margin: 0; }
+      a { color: var(--teal); }
+      .top { background: var(--deep); color: #fff; }
+      .top-inner, .wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, 5vw, env(safe-area-inset-left, 0px)); padding-right: max(16px, 5vw, env(safe-area-inset-right, 0px)); }
+      .top-inner { padding-block: 22px 56px; display: grid; gap: 40px; }
+      .top nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+      .wordmark { color: #fff; font-size: 23px; font-weight: 800; letter-spacing: -0.06em; text-decoration: none; }
+      .wordmark span { color: #68e2d1; }
+      .back { color: #cfe7ea; font-size: 14px; font-weight: 600; text-decoration: none; }
+      .back:hover { color: #fff; }
+      .eyebrow { font-family: var(--f-num); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #8fd8cf; margin: 0 0 14px; }
+      .eyebrow.dark { color: var(--teal); }
+      h1, h2 { font-family: var(--f-display); font-weight: 500; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+      h1 { font-size: clamp(34px, 5.4vw, 60px); line-height: 1.08; max-width: 16ch; }
+      h1 em, h2 em { font-style: italic; color: #68e2d1; }
+      h2 { font-size: clamp(26px, 3.2vw, 34px); line-height: 1.15; }
+      h3 { font-size: 16px; margin: 0; font-weight: 700; }
+      p { margin: 0; max-width: 68ch; }
+      .lede { color: #d8e3ec; font-size: 18px; margin-top: 18px; }
+      .wrap { padding-block: 48px 72px; display: grid; gap: 56px; }
+      section { display: grid; gap: 18px; min-width: 0; }
+      .wrap > *, section > * { min-width: 0; }
+      .num { font-family: var(--f-num); font-variant-numeric: tabular-nums; }
+      .panel { background: var(--paper); border: 1px solid var(--line); border-radius: 4px; padding: 22px; }
+      .inputs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr)); gap: 18px; }
+      label { display: grid; gap: 6px; font-size: 13px; color: var(--muted); font-weight: 600; }
+      input[type=number], select { font: inherit; font-family: var(--f-num); font-size: 14px; color: var(--ink); background: var(--cream); border: 1px solid var(--line); border-radius: 3px; padding: 9px 10px; width: 100%; }
+      input:focus-visible, select:focus-visible, button:focus-visible { outline: 3px solid #a7f4dd; outline-offset: 2px; }
+      .seg { display: flex; flex-wrap: wrap; gap: 6px; }
+      .seg button { font: inherit; font-size: 13px; font-weight: 600; border: 1px solid var(--line); background: var(--cream); color: var(--ink); padding: 8px 12px; border-radius: 999px; cursor: pointer; min-height: 36px; }
+      .seg button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+      .opts { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 16px; }
+      .opt { background: var(--paper); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 4px; padding: 20px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+      .opt .big { font-family: var(--f-num); font-size: 25px; font-weight: 500; }
+      .opt .sub { font-size: 13px; color: var(--muted); }
+      .kv { display: grid; grid-template-columns: 1fr auto; gap: 5px 12px; font-size: 13.5px; margin: 0; }
+      .kv dt { color: var(--muted); }
+      .kv dd { margin: 0; text-align: right; font-family: var(--f-num); }
+      .rate { display: grid; grid-template-columns: 1fr 96px; gap: 8px; align-items: center; font-size: 13px; color: var(--muted); }
+      .chip { display: inline-block; font-size: 11.5px; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: var(--teal-soft); color: var(--teal); }
+      .chip.warn { background: var(--warn-soft); color: var(--warn); }
+      .chip.ok { background: var(--ok-soft); color: var(--ok); }
+      .chart-box { overflow-x: auto; }
+      svg text { fill: var(--muted); font-family: var(--f-num); font-size: 11px; }
+      .legend { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 13px; margin-bottom: 10px; }
+      .legend span::before { content: ""; display: inline-block; width: 12px; height: 3px; background: var(--c); vertical-align: middle; margin-right: 6px; }
+      .table-box { overflow-x: auto; border: 1px solid var(--line); border-radius: 4px; background: var(--paper); }
+      table { border-collapse: collapse; width: 100%; min-width: 860px; font-size: 13.5px; }
+      th, td { padding: 9px 14px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+      th:first-child, td:first-child { text-align: left; }
+      thead th { font-size: 12px; color: var(--muted); font-weight: 700; background: var(--cream); }
+      thead th i { display: inline-block; width: 8px; height: 8px; background: var(--c); margin-right: 6px; }
+      tbody td { font-family: var(--f-num); font-variant-numeric: tabular-nums; }
+      tbody tr:last-child td { border-bottom: 0; font-weight: 600; }
+      .arow { display: grid; grid-template-columns: minmax(0, 1.6fr) 140px minmax(0, 1fr); gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); }
+      .arow:last-child { border-bottom: 0; }
+      .arow .name { font-weight: 700; }
+      .arow .meta { font-size: 12.5px; color: var(--muted); }
+      .arow .status { justify-self: end; text-align: right; font-size: 12.5px; }
+      .totals { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr)); gap: 12px; }
+      .tot { background: var(--paper); border: 1px solid var(--line); border-radius: 4px; padding: 14px 16px; }
+      .tot .label { font-family: var(--f-num); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+      .tot .v { font-family: var(--f-num); font-size: 20px; font-weight: 500; }
+      .principles ol { margin: 0; padding-left: 22px; display: grid; gap: 12px; max-width: 74ch; }
+      .note { font-size: 13.5px; color: var(--muted); }
+      .disclaimer { background: var(--teal-soft); border-radius: 4px; padding: 18px 20px; font-size: 14px; }
+      footer.sources { border-top: 1px solid var(--line); padding-top: 24px; }
+      footer.sources ul { margin: 8px 0 0; padding-left: 18px; font-size: 13.5px; display: grid; gap: 4px; }
+      @media (max-width: 640px) {
+        .arow { grid-template-columns: 1fr 120px; }
+        .arow .status { grid-column: 1 / -1; justify-self: start; text-align: left; }
+        .opts { grid-template-columns: 1fr; }
+      }
+      @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+    </style>
+  </head>
+  <body>
+    <header class="top">
+      <div class="top-inner">
+        <nav aria-label="Navigatie">
+          <a class="wordmark" href="../" aria-label="Jeroen Groeneweg home">JG<span>.</span></a>
+          <a class="back" href="../">← Terug naar jeroengroeneweg.nl</a>
+        </nav>
+        <div>
+          <p class="eyebrow">Rekentool · tarieven oktober 2026</p>
+          <h1>Wat levert het geld in je <em>BV</em> op?</h1>
+          <p class="lede">Zes manieren om vrij vermogen in een BV te laten werken, naast elkaar doorgerekend na vennootschapsbelasting. Elk percentage is een aanname die je zelf kunt aanpassen.</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section aria-labelledby="h-in">
+        <p class="eyebrow dark">01 · Uitgangspunten</p>
+        <h2 id="h-in">Jouw situatie</h2>
+        <div class="panel inputs">
+          <label for="amt">Bedrag (€)<input id="amt" type="number" value="250000" step="10000" min="10000" /></label>
+          <label for="yrs">Looptijd (jaren)<input id="yrs" type="number" value="10" min="1" max="25" /></label>
+          <label for="vpb">Vpb-tarief op het rendement<select id="vpb"><option value="19" selected>19% (winst BV tot € 200.000)</option><option value="25.8">25,8% (winst BV daarboven)</option></select></label>
+          <label for="infl">Inflatie (% per jaar)<input id="infl" type="number" value="2.5" step="0.1" /></label>
+          <div style="display:grid;gap:6px">
+            <span style="font-size:13px;color:var(--muted);font-weight:600">Weergave</span>
+            <span class="seg" role="group" aria-label="Weergave">
+              <button type="button" id="v-nom" aria-pressed="true">Nominaal</button>
+              <button type="button" id="v-real" aria-pressed="false">Koopkracht van nu</button>
+            </span>
+          </div>
+        </div>
+        <p class="note">Box 2 betaal je pas als je winst naar privé uitkeert. Dat is voor elke optie gelijk, dus de vergelijking laat het weg.</p>
+      </section>
+
+      <section aria-labelledby="h-opt">
+        <p class="eyebrow dark">02 · Vergelijking</p>
+        <h2 id="h-opt">Zes opties na <span id="yrsLbl">10</span> jaar</h2>
+        <div class="opts" id="opts"></div>
+        <p class="note">ETF-scenario's zijn gemiddelden per jaar; in de praktijk zitten daar jaren van −20% of erger tussen. Obligaties zijn gerekend als een ladder die je tot de einddatum aanhoudt. Vastgoed is zonder hypotheek gerekend: het hele bedrag gaat in de aankoop, inclusief 8% overdrachtsbelasting en circa 2% overige aankoopkosten.</p>
+      </section>
+
+      <section aria-labelledby="h-chart">
+        <p class="eyebrow dark">03 · Per jaar</p>
+        <h2 id="h-chart">Ontwikkeling van het vermogen</h2>
+        <div class="panel">
+          <div class="legend" id="legend"></div>
+          <div class="chart-box"><svg id="chart" viewBox="0 0 900 360" width="100%" role="img" aria-label="Vermogensontwikkeling per optie"></svg></div>
+        </div>
+        <div class="table-box"><table id="tbl"></table></div>
+        <p class="note">ETF en vastgoed tonen de netto waarde als je in dat jaar alles verkoopt, inclusief verkoopkosten en Vpb over de winst. Bij vastgoed start de lijn daardoor onder het inlegbedrag: de aankoopkosten moeten eerst worden terugverdiend. Rente-opties tonen het saldo na jaarlijkse Vpb, met de rente steeds herbelegd.</p>
+      </section>
+
+      <section aria-labelledby="h-alloc">
+        <p class="eyebrow dark">04 · Spreiding</p>
+        <h2 id="h-alloc">Spreiding en het depositogarantiestelsel</h2>
+        <p>Het depositogarantiestelsel dekt € 100.000 per rekeninghouder per bank. Een BV telt als één rekeninghouder, los van de privérekeningen van de aandeelhouders. Banklabels onder één vergunning tellen samen als één bank. Pas de verdeling aan; de tool controleert de dekking per bank.</p>
+        <div class="panel" id="alloc"></div>
+        <div class="totals" id="totals"></div>
+      </section>
+
+      <section aria-labelledby="h-adv" class="principles">
+        <p class="eyebrow dark">05 · Vuistregels</p>
+        <h2 id="h-adv">Zo kun je een verdeling opbouwen</h2>
+        <p>Een eenvoudig uitgangspunt: geld dat je binnen 2 jaar nodig kunt hebben staat gegarandeerd, geld voor 2 tot 5 jaar staat vast tegen een bekende rente, en de rest mag harder werken.</p>
+        <ol>
+          <li><strong>Werkkapitaal bij de huisbank.</strong> Genoeg voor lopende kosten en de Vpb-aanslag. De rente is hier laag, dus houd dit bewust klein.</li>
+          <li><strong>Buffer verdeeld over andere banken, elk onder € 100.000.</strong> Bijvoorbeeld één vrij opneembare spaarrekening en één depositoladder van 1, 2 en 3 jaar.</li>
+          <li><strong>Obligaties als aanvulling op deposito's.</strong> Een ladder van staatsobligaties met looptijden van 2 tot 7 jaar geeft een vergelijkbare rente, zonder grens per bank: je bezit de obligaties zelf en de broker bewaart ze gescheiden.</li>
+          <li><strong>MKB-leningen met beleid.</strong> Platforms zoals BridgeFund en Floryn vragen een minimale inleg van € 100.000 en vallen niet onder het depositogarantiestelsel of AFM-toezicht. Je loopt kredietrisico op het platform zelf. Houd dit een beperkt deel van het geheel en vraag de jaarrekening en cijfers over achterstanden op.</li>
+          <li><strong>ETF's voor de lange termijn.</strong> Een wereldwijde, accumulerende ETF via een broker die zakelijke rekeningen ondersteunt. Leg geleidelijk in om timingrisico te dempen.</li>
+          <li><strong>Vastgoed bewust kiezen.</strong> Een pand kost direct circa 10% aan aankoopkosten en is lastig snel te verkopen. Het loont vooral met een lange horizon of met financiering. Een beursgenoteerd vastgoedfonds is een liquide alternatief.</li>
+          <li><strong>Vergeet aflossen niet.</strong> Heeft de BV leningen, dan levert aflossen na Vpb-aftrek een risicoloos rendement op van ongeveer 81% van de leenrente.</li>
+        </ol>
+        <p class="disclaimer">Deze rekentool is bedoeld als hulpmiddel en geeft geen persoonlijk financieel, fiscaal of beleggingsadvies. De Vpb is vereenvoudigd tot één vlak tarief over het rendement; de werkelijke heffing hangt af van de totale winst van de BV. De genoemde aanbieders zijn voorbeelden, geen aanbevelingen. Laat je situatie toetsen door een fiscalist of financieel adviseur.</p>
+      </section>
+
+      <footer class="sources">
+        <p class="eyebrow dark">Bronnen voor de standaardpercentages</p>
+        <ul>
+          <li>Grootbank zakelijk 1,25%: <a href="https://www.actuelerentestanden.nl/?p=112575" target="_blank" rel="noopener">ING Zakelijke Oranje Spaarrekening</a></li>
+          <li>Hoogste spaarrente 3,10% (oktober 2026): <a href="https://www.geld.nl/sparen/expert/nieuws/de-top-5-hoogste-spaarrentes-oktober-2026" target="_blank" rel="noopener">Geld.nl</a></li>
+          <li>Tarieven MKB-leningen: <a href="https://www.bridgefund.nl/beleggen/" target="_blank" rel="noopener">BridgeFund</a> en <a href="https://www.floryn.com/beleggen" target="_blank" rel="noopener">Floryn</a></li>
+          <li>Netto huurrendement rond 3,7%: <a href="https://rekenmaat.nl/netto-huurrendement" target="_blank" rel="noopener">Rekenmaat</a></li>
+          <li>Overdrachtsbelasting woningen 8% per 2026: <a href="https://zoek.officielebekendmakingen.nl/kst-36602-42.pdf" target="_blank" rel="noopener">Kamerstuk 36602-42</a></li>
+          <li>Vpb 19% / 25,8% in 2026: <a href="https://www.sra.nl/nieuws/000000/2025/09/nieuwe-belastingtarieven--kortingen-en-faciliteiten-2026" target="_blank" rel="noopener">SRA</a></li>
+          <li>Obligatierente, ETF-rendement en waardestijging van vastgoed zijn aannames. Check actuele rentes bij je bank of broker.</li>
+        </ul>
+      </footer>
+    </main>
+
+    <script src="rendement-bv.js"></script>
+  </body>
+</html>
